@@ -478,3 +478,19 @@ body {
 .error-message {
     color:#F00;
 }
+
+.btn-msimple  {
+    font-size: 1em;
+    color: #fff;
+    padding: 0.5em 1.3em 0.4em 1.3em;
+    background:#F05F40;
+    border: none;
+    outline: none;
+    margin: 0.6em auto 0em;
+    display: block;
+    border: 2px solid #9d3e2a;
+    border-radius: 1px;
+}
+.btn-msimple:hover {
+    background: #c65134;
+}

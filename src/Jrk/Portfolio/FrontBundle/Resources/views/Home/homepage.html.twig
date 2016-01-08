@@ -98,7 +98,7 @@
 
                 {% for project in projects %}
                     <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
+                        <a href="#project-popup-{{ project.id }}" class="popin-middle portfolio-box">
                             <img src="{{ project.picture | imagine_filter('project_cover') | dateCache }}" class="img-responsive" alt="">
                             <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
@@ -111,6 +111,12 @@
                                 </div>
                             </div>
                         </a>
+
+                        <div id="project-popup-{{ project.id }}" class="mfp-hide popin-dialog">
+                            <div class="poptext">
+                                {% include 'JrkPortfolioFrontBundle:Home:project-popup.html.twig' %}
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
 

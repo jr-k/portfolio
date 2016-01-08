@@ -59,7 +59,12 @@ class RoutingExtraExtension extends \Twig_Extension {
             'noIcon' => new \Twig_Function_Method($this, 'noIcon', array('is_safe' => array('html') )),
             'guessIcon' => new \Twig_Function_Method($this, 'guessIcon', array('is_safe' => array('html') )),
             'yearAndMonthBetween' => new \Twig_Function_Method($this, 'yearAndMonthBetween'),
+            'explode' => new \Twig_Function_Method($this, 'explodeString'),
         );
+    }
+
+    function explodeString($message, $separator = ';') {
+        return explode($separator, $message);
     }
 
     function yearAndMonthBetween($dateFrom, $dateTo, $today = false) {
