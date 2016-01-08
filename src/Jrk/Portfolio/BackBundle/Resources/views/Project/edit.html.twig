@@ -36,13 +36,43 @@
                                     #######################}
                                     <div class="col-md-6">
                                         <fieldset>
+                                            <div class="form-group {% if form_invalid(form.attachmentThumb) %}error-input{% endif %}">
+                                                <div class="form_std_row row">
+                                                    {{ form_label(form.attachmentThumb,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                        <div class="col-lg-6" style="overflow:auto">
+                                                            {% if entity.file != '' %}
+                                                                <a href="{{ entity.picture(true,'-thumb') | imagine_filter('medium') | dateCache }}" target="_blank">
+                                                                    Voir le fichier
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+
+                                                        <div class="fileupload clearfix block fileupload-new" data-provides="fileupload">
+                                                        <span class="btn btn-file plr15 grey-2">
+                                                            <span class="fileupload-new">
+                                                                <i class="icon-paper-clip"></i>
+                                                                <span class="hpxs">Select cover</span>
+                                                            </span>
+                                                            {{ form_widget(form.attachmentThumb) }}
+                                                            {{ form_errors(form.attachmentThumb) }}
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                             <div class="form-group {% if form_invalid(form.attachment) %}error-input{% endif %}">
                                                 <div class="form_std_row row">
                                                     {{ form_label(form.attachment,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
                                                     <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12 mt10">
                                                         <div class="col-lg-6" style="overflow:auto">
                                                             {% if entity.file != '' %}
-                                                                <img class="mb10" src="{{ entity.file | imagine_filter('project_cover') | dateCache }}" alt=" ">
+                                                                <a href="{{ entity.file | imagine_filter('project_cover') | dateCache }}" target="_blank">
+                                                                    Voir le fichier
+                                                                </a>
                                                             {% endif %}
                                                         </div>
 

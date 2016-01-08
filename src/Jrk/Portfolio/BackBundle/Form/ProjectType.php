@@ -23,6 +23,12 @@ class ProjectType extends AbstractType
             ))
 
 
+            ->add('attachmentThumb', 'file', array(
+                'label' => 'Photo (64x64) : ',
+                'required' => false
+            ))
+
+
             ->add('title','text',array(
                 'required' => true,
                 'label' => 'Nom'

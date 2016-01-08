@@ -24,11 +24,14 @@ trait Uploadable
         return 'resources/'.basename(str_replace('\\','/',strtolower(__CLASS__))).'-'.substr(md5(get_class($this)),0,6);
     }
 
-    public function getPicture($defaultResource = true)
+    public function getPicture($defaultResource = true, $suffix = false)
     {
         $file = $this->getFile();
 
         if ($file != null) {
+            if ($suffix) {
+                return str_replace('picture.jpg','picture'.$suffix.'.jpg', $file);
+            }
             return $file;
         }
 
@@ -42,20 +45,6 @@ trait Uploadable
     public function getFile()
     {
         $dir = $this->getUploadDirectoryPath();
-        $files = array();
-
-        if(is_dir($dir)){
-            $files = scandir($dir);
-
-            foreach($files as $imgNameKey => $imgName){
-                if($imgName !== '.' && $imgName !== '..'){
-                    if (!is_dir($dir.'/'.$imgName)) {
-                        return $dir.'/'.$imgName;
-                    }
-                }
-            }
-        }
-
-        return null;
+        return $dir.'/picture.jpg';
     }
 }

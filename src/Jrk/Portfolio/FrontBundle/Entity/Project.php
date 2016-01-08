@@ -76,6 +76,7 @@ class Project
     private $active;
 
     public $attachment;
+    public $attachmentThumb;
 
 
     /**

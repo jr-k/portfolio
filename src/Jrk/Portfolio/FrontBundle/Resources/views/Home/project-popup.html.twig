@@ -1,0 +1,47 @@
+<div class="material-card col-lg-12">
+    <h2>
+        <i class="fa fa-cube mr10"></i>
+        {{ project.title }}
+    </h2>
+
+    <div class="text-payload col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background: #EEEEEE">
+
+        <div class="col-lg-3 project-pic">
+            <img src="{{ project.picture(true,'-thumb') | imagine_filter('medium') | dateCache }}" alt="{{ project.title }}" title="{{ project.title }}" />
+        </div>
+
+        <div class="col-lg-9 tal">
+            <span>Name</span>
+            <br />
+            <span class="portfolio-color normal">{{ project.title }}</span>
+            <br />
+            <span>Skills</span>
+            <br />
+            {% for skill in explode(project.skills) %}
+                    <span class="portfolio-color normal">{{ skill }}</span>
+                    {% if not loop.last %},{% endif %}
+                {% endfor %}
+            <br />
+            <span>Description</span>
+            <br />
+            <span class="portfolio-color normal">
+                {{ project.description }}
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+    <div class="clearfix"></div>
+    <ul>
+        <li class="last pt0">
+            <div class="col-sm-6 col-sm-push-3 col-xs-12 tac">
+                <a href="{{ project.url }}" class="btn-msimple pbt10" style="width: 95%" target="_blank">
+                    <i class="fa fa-globe"></i>
+                    Go to website
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>

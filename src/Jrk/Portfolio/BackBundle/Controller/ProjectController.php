@@ -120,6 +120,14 @@ class ProjectController extends BaseController
                     $this->get('liip_imagine.cache.manager')->remove($entity->getFile());
                 }
 
+                // Picture management
+                $attachment = $form['attachmentThumb']->getData();
+
+                if (is_object($attachment)) {
+                    $attachment->move($entity->getUploadDirectoryPath(true), 'picture-thumb.jpg');
+                    $this->get('liip_imagine.cache.manager')->remove($entity->getFile());
+                }
+
                 // Multi buttons management
                 if ($form->get('save_and_stay')->isClicked()) {
                     return $this->redirect($this->generateUrl(self::$route_edit,array('id' => $entity->getId())));

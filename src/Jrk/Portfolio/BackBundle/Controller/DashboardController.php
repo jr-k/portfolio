@@ -10,7 +10,7 @@ class DashboardController extends BaseController
 {
     public function indexAction()
     {
-        return $this->redirect($this->generateUrl('jrk_portfolio_back_blog_post_list'));
+        return $this->redirect($this->generateUrl('jrk_portfolio_back_project_list'));
 
     }
 

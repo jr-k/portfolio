@@ -1,0 +1,46 @@
+{% verbatim %}
+<a class="hidden" id="general_modal_magnific_trigger" href="#general_modal_magnific"></a>
+
+<div id="general_modal_magnific" class="mfp-hide popin-dialog mt0"></div>
+
+<div id="skeleton_modal_magnific" class="popbox">
+    <div class="poptext">
+        <div class="material-card col-lg-12 bg-white">
+            <div class="{{=it.modalClass}}">
+                <h2 class="f14-xs {{=it.headerClass}}">
+                    <i class="fa {{=it.titleIcon}} block-xs mb5-xs"></i>
+                    {{=it.title}}
+                </h2>
+                <div class="f12-xs tal" style="padding:30px 25px;background:#FFF;border-bottom: 1px solid #EEE;margin-top:{{=it.marginTop}}px;margin-bottom:{{=it.marginBottom}}px;font-size:{{=it.fontSize}}px;color:{{=it.color}}">
+                    {{=it.message}}
+                </div>
+                <ul>
+                    <li class="last">
+                        <div class="col-xs-12 tac">
+                            {{? it.multiple }}
+                            {{~it.choices :choice:index}}
+                            <a class="btn btn-tiny navlog device-btn {{=choice.buttonClass}}" href="{{? choice.url }}{{=choice.action}}{{??}}javascript:void(0);{{?}}" __onclick__="{{? !choice.url }}{{=choice.action}}{{?}}">
+                                {{=choice.label}}
+                            </a>
+                            <a type="button" class="btn-msimple inline-block {{=choice.buttonClass}}" href="{{? choice.url }}{{=choice.action}}{{??}}javascript:void(0);{{?}}" __onclick__="{{? !choice.url }}{{=choice.action}}{{?}}">
+                                <i class="fa {{=choice.icon}}"></i>
+                                {{=choice.label}}
+                            </a>
+                            {{~}}
+                            {{??}}
+                            <button type="button" class="btn-msimple inline-block" onclick="$.magnificPopup.close();">
+                                <i class="fa {{=it.closeIcon}} block-xs mb5-xs"></i>
+                                {{=it.closeLabel}}
+                            </button>
+                            {{?}}
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
+
+
