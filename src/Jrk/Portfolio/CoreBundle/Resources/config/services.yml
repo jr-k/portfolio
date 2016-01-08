@@ -1,0 +1,24 @@
+parameters:
+#    jrk_portfolio_core.example.class: Jrk\Portfolio\CoreBundle\Example
+
+services:
+#    jrk_portfolio_core.example:
+#        class: %jrk_portfolio_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    off.global_configuration:
+        class: Jrk\Portfolio\CoreBundle\Services\GlobalConfiguration
+        arguments: [%translation%,@doctrine.orm.entity_manager,@service_container,@security.context]
+        tags:
+             - { name: twig.extension }
+
+    off.mailer:
+        class: Jrk\Portfolio\CoreBundle\Services\Mailer
+        arguments: [%translation%,%email_from%,@doctrine.orm.entity_manager,@request_stack,@mailer,@translator,@templating,@router]
+
+    off.locale_manager:
+        class: Jrk\Portfolio\CoreBundle\Services\LocaleManager
+        arguments: [@doctrine.orm.entity_manager]
+
+    off.paginator:
+        class: Jrk\Portfolio\CoreBundle\Services\Paginator
+        arguments: [@request_stack,@router]

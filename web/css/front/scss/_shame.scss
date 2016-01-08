@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@import 'variables';
+@import 'mixin';
+
+/*************************************
+* @_00 ALL LAST MINUTE CHANGES
+*************************************/
+// Add any css here
+
+.language-index {
+    position: relative;
+    float: right;
+    text-align: right;
+
+    ul {
+      list-style: none;
+    }
+
+    li.arrow-up-drop {
+
+    }
+
+    a.dropdown-toggle {
+        display: block;
+    }
+
+    ul.dropdown-menu {
+        position: absolute;
+        min-width: 1px;
+        left: 3px;
+
+        > li {
+
+          a {
+            padding: 0px;
+          }
+
+          margin-bottom:5px;
+
+          &:last-child {
+            margin-bottom:0px;
+          }
+        }
+    }
+}

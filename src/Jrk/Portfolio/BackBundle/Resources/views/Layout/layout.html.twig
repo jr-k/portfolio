@@ -1,0 +1,101 @@
+{% extends '::base-back.html.twig' %}
+
+{% block header %}
+    <div class="container f12">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('jrk_portfolio_back_homepage') }}">Dashboard</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+
+                {% set menus = [
+                    {
+                        name: 'Projets',
+                        children: [
+                            {name: 'Liste des projets', route: 'jrk_portfolio_back_project_list'}
+                        ]
+                    },
+                    {
+                        name: 'Contact',
+                        children: [
+                            {name: 'Liste des messages', route: 'jrk_portfolio_back_contact_list'}
+                        ]
+                    },
+                    {
+                        name: 'Configuration',
+                        children: [
+                            {name: 'Liste des configurations', route: 'jrk_portfolio_back_configuration_list'}
+                        ]
+                    },
+
+
+                    {
+                        name: 'Déconnexion',
+                        url: path('fos_user_security_logout')
+                    },
+
+                    {
+                        name: 'Front-Office',
+                        url: path('jrk_portfolio_front_homepage')
+                    }
+
+                ] %}
+
+                {% set current_menu = '' %}
+                {% for menu in menus %}
+                    {% if menu.children is defined %}
+                        {% for child in menu.children %}
+                            {% if child.route is defined %}
+                                {% if child.route == current_route() %}
+                                    {% set current_menu = menu.name %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for menu in menus %}
+                    <li class="dropdown {% if current_menu == menu.name %}active{% endif %}">
+                        <a href="{% if menu.url is defined %}{{ menu.url }}{% else %}#_{% endif %}" {% if menu.url is not defined %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
+                            {{ menu.name }}
+                            {% if menu.children is defined %}<span class="caret"></span>{% endif %}
+                        </a>
+                        {% if menu.children is defined %}
+                            <ul class="dropdown-menu" role="menu">
+                                {% for childMenu in menu.children %}
+                                    {% if childMenu.hidden is defined and childMenu.hidden %}
+                                        {# Nothing #}
+                                    {% elseif childMenu.divider is defined and childMenu.divider %}
+                                        <li class="divider"></li>
+                                    {% else %}
+                                        <li class="{% if current_route() == childMenu.route %}active{% endif %}">
+                                            <a class="bb0" href="{% if childMenu.route is defined %}{{ path(childMenu.route) }}{% else %}#_{% endif %}">
+                                                {{ childMenu.name }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+
+
+
+            </ul>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block container %}
+
+
+{% endblock container %}

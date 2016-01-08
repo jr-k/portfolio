@@ -1,0 +1,24 @@
+<ul class="clearfix m0 p0">
+    <li class="dropdown">
+        <a {% if _locales|length > 1 %}data-toggle="dropdown"{% endif %} class="dropdown-toggle tdn" href="javascript:void(0);">
+            {% if _locale is defined %}
+                <img src="{{ asset(_locale.flag) }}" alt="{{ _locale.description }}">
+            {% endif %}
+
+            {% if _locales|length > 1 %}
+                <b class="caret ml0 grey-3"></b>
+            {% endif %}
+        </a>
+        <ul class="dropdown-menu mt10">
+            {% for locale in _locales %}
+                {% if _locale is defined and locale != _locale %}
+                    <li class="">
+                        <a hreflang="{{ locale.locale }}" href="{{ path('jrk_portfolio_front_homepage',{_locale:locale.locale}) }}" class="p0">
+                            <img class="plr5 center" src="{{ asset(locale.flag) }}" alt="{{ locale.description }}">
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

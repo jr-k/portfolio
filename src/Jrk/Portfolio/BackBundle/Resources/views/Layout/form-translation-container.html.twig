@@ -1,0 +1,32 @@
+<div class="clearfix mtb20 table-bordered">
+    <div class="bg-pink p10">
+        <h3 class="f14 bold white m0">
+            Traductions
+        </h3>
+    </div>
+    <div class="bg-gris-1">
+        {{ form_errors(form) }}
+        <div class="a2lix_translations tabbable pt10 plr15 pb10">
+            <ul class="a2lix_translationsLocales nav nav-tabs ml0">
+                {% for form in formTrans %}
+                    {% set locale = form.vars.name %}
+
+                    <li {% if app.request.locale == locale %}class="active"{% endif %}>
+                        <a href="#" data-toggle="tab" data-target=".a2lix_form-{{ locale }}" class="pink-1">
+                            {{ locale|upper }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="a2lix_form tab-content bg-white p15">
+                {% for form in formTrans %}
+                    {% set locale = form.vars.name %}
+                    <div class="a2lix_form-{{ locale }} tab-pane {% if app.request.locale == locale %}active{% endif %}">
+                        {% block widgets %}{% endblock %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

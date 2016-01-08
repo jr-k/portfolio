@@ -1,0 +1,46 @@
+<?php
+
+namespace Jrk\Magicard\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * OrderState
+ *
+ * @ORM\Table(name="magicard_card_order_state")
+ * @ORM\Entity
+ */
+class CardOrderState
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Jrk\Magicard\CoreBundle\Entity\CardOrder", inversedBy="cardOrderStates")
+     */
+    protected $cardOrder;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Jrk\Magicard\CoreBundle\Entity\OrderState", inversedBy="cardOrderStates")
+     */
+    protected $orderState;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+
+
+}

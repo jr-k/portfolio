@@ -1,0 +1,43 @@
+######################################
+#       Public area
+######################################
+
+jrk_portfolio_front:
+    resource: "@JrkPortfolioFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jrk_portfolio_user:
+    resource: "@JrkPortfolioUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#####################################
+#       Member area
+######################################
+
+# Nothing for the moment
+
+######################################
+#       Restricted area
+######################################
+jrk_portfolio_back:
+    resource: "@JrkPortfolioBackBundle/Resources/config/routing.yml"
+    prefix:   /back
+
+######################################
+#       Special area
+######################################
+jrk_portfolio_core:
+    resource: "@JrkPortfolioCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+######################################
+#       FOS User area
+######################################
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+######################################
+#       Picture handler
+######################################
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

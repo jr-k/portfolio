@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@import '../_variables.scss';
+@import '../_mixin.scss';
+
+/*************************************
+* @_00  Fallback Placeholder IE8
+*************************************/
+.fallbackPlaceholder {
+  color: $brown-3;
+  font-weight: normal;
+}

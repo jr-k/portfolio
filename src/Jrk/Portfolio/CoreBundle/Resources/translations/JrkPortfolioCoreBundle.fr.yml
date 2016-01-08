@@ -1,0 +1,113 @@
+common_month_01: 'Janvier'
+common_month_02: 'Février'
+common_month_03: 'Mars'
+common_month_04: 'Avril'
+common_month_05: 'Mai'
+common_month_06: 'Juin'
+common_month_07: 'Juillet'
+common_month_08: 'Août'
+common_month_09: 'Septembre'
+common_month_10: 'Octobre'
+common_month_11: 'Novembre'
+common_month_12: 'Décembre'
+
+html_title: "Portfolio"
+html_title_simple: "Portfolio"
+
+front_layout_area_right_menu_contact_title: 'Contact'
+front_layout_area_right_menu_contact_description: 'Une question ? Une suggestion ? Un problème avec une notification ? <a href="%link%" class="portfolio-1 bold">Contactez-nous</a> sans hésiter !'
+
+front_contact_contact_title: "Nous contacter"
+front_contact_contact_caption: "Une question ou une suggestion ? Envoie nous un message, nous serons heureux de te répondre."
+front_contact_validation_mail: "<p>Bonjour</p><p>Nous avons bien reçu votre message, nous y répondrons aussi rapidement que possible.</p>"
+
+front_home_homepage_flag_message_head: "Title 1"
+front_home_homepage_flag_message: "Title 2"
+
+
+front_layout_area_header_in_settings: 'Paramètres'
+front_layout_area_header_in_logout: 'Déconnexion'
+front_layout_area_header_in_blog: 'Blog'
+
+front_layout_area_header_out_email: 'Adresse email'
+front_layout_area_header_out_password: 'Mot de passe'
+front_layout_area_header_out_ok: 'OK'
+
+
+front_settings_settings_change_password_title: "Changement du mot de passe"
+front_settings_settings_change_password_current: "Mot de passe actuel"
+front_settings_settings_change_password_new: "Nouveau"
+front_settings_settings_change_password_confirmation: "Confirmation"
+front_settings_settings_change_password_save: "Modifier"
+
+front_settings_settings_delete_account_title: "Désactivation"
+front_settings_settings_delete_account_description: "<p>En cliquant sur le lien ci-dessous, votre compte sera désactivé et vos traces d'utilisation de Portfolio seront cachées.</p><p>Vous pourrez ré-activer votre compte à tout moment, simplement en vous connectant de nouveau.</p>"
+front_settings_settings_delete_account_confirm: "Je veux désactiver mon compte"
+
+
+
+override_fosuserbundle_layout_title: "Connexion"
+override_fosuserbundle_layout_noaccount: "Pas encore inscrit ?"
+override_fosuserbundle_layout_noaccount_action: "Télécharge l'application"
+
+override_fosuserbundle_security_login_email: "Adresse email"
+override_fosuserbundle_security_login_password: "Mot de passe"
+override_fosuserbundle_security_login_forgotten_password: "Mot de passe oublié ?"
+override_fosuserbundle_security_login_connect: "Connexion"
+
+override_fosuserbundle_security_request_title: "Mot de passe oublié"
+override_fosuserbundle_security_request_action: "Confirmer"
+
+override_fosuserbundle_security_checkemail_text: "Un email vous a été envoyé. Vous devrez cliquer sur le lien de confirmation pour changer votre mot de passe."
+override_fosuserbundle_security_login_bad_credentials: "Mauvais identifiants"
+
+front_blog_blog_readmore: "Lire la suite..."
+front_blog_blog_noposts: "Aucun article"
+font_blog_blog_html_title_prefix_blog: "Blog"
+
+
+
+form_contact_type_firstname: 'Prénom *'
+form_contact_type_email: 'Email *'
+form_contact_type_subject: 'Sujet *'
+form_contact_type_message: 'Message *'
+form_contact_type_save: 'Envoyer'
+
+form_comment_type_description: 'Commentaire'
+
+mail_resetting_password_subject: 'Portfolio - Réinitialisation de votre mot de passe '
+user_register_fogotten_password_hello: "Bonjour"
+user_register_fogotten_password_content: 'Pour réinitialiser votre mot de passe, merci de cliquer sur ce lien : <a href="%confirmationUrl%" target="_blank" style="font-weight:bold;">réinitialiser mon mot de passe</a>'
+
+override_fosuserbundle_security_request_placeholder: "Email"
+override_fosuserbundle_security_request_caption: "Veuillez entrer votre email :"
+
+override_fosuserbundle_security_request_invalid_email: "Ce compte n'existe pas."
+override_fosuserbundle_security_request_valid_email: "Un lien de ré-initialisiation du mot de passe a été envoyé à l'adresse email %email%."
+override_fosuserbundle_security_request_waiting_email: "Un lien de ré-initialisiation a déjà été envoyé à l'adresse email %email%, veuillez patienter %time% minutes."
+
+override_fosuserbundle_security_reset_title: "Nouveau mot de passe"
+override_fosuserbundle_security_reset_success: "Mot de passe modifié !"
+
+override_fosuserbundle_security_reset_password: "Mot de passe"
+override_fosuserbundle_security_reset_confirm: "Confirmation"
+override_fosuserbundle_security_reset_save: "Modifier"
+override_fosuserbundle_security_reset_mismatch: "Les deux mots de passe ne correspondent pas. "
+
+user_mail_confirmation_mail_subject: "Portfolio - Confirmation"
+user_mail_confirmation_mail_body: "<p>Bonjour !</p><p>Vous êtes désormais inscrit sur Portfolio !<br /> Activez votre compte en cliquant sur le lien suivant : </p>"
+
+mail_footer: "À bientôt sur Portfolio !"
+
+front_home_homepage_calltoaction: "Notre blog"
+
+home_section3_firstname: "Prénom"
+home_section3_lastname: "Nom"
+home_section3_email: "Adresse e-mail"
+home_section3_button: "S'inscrire à la newsletter"
+
+form_newsletter_success: "Votre inscription à la newsletter a bien été enregistrée"
+
+comment_author: "Auteur"
+comment_message: "Message"
+comment_btn: "Commenter"

@@ -1,0 +1,92 @@
+jrk_portfolio_back_homepage:
+    path:     /
+    defaults: { _controller: JrkPortfolioBackBundle:Dashboard:index }
+
+####################################
+#           Project
+###################################
+
+jrk_portfolio_back_project_list:
+    path: /project/list/{page}/{limit}
+    defaults: { _controller:JrkPortfolioBackBundle:Project:list, page:1, limit:20 }
+
+jrk_portfolio_back_project_edit:
+    path: /project/edit/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:Project:edit, id:-1 }
+
+jrk_portfolio_back_project_delete:
+    path: /project/delete/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:Project:delete, id:-1 }
+
+
+####################################
+#           Contact
+###################################
+
+jrk_portfolio_back_contact_list:
+    path: /contact/list/{page}/{limit}
+    defaults: { _controller:JrkPortfolioBackBundle:Contact:list, page:1, limit:20 }
+
+jrk_portfolio_back_contact_edit:
+    path: /contact/edit/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:Contact:edit, id:-1 }
+
+jrk_portfolio_back_contact_delete:
+    path: /contact/delete/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:Contact:delete, id:-1 }
+
+
+
+####################################
+#           BlogPost
+###################################
+
+jrk_portfolio_back_blog_post_list:
+    path: /blog/post/list/{page}/{limit}
+    defaults: { _controller:JrkPortfolioBackBundle:BlogPost:list, page:1, limit:20 }
+
+jrk_portfolio_back_blog_post_edit:
+    path: /blog/post/edit/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:BlogPost:edit, id:-1 }
+
+jrk_portfolio_back_blog_post_delete:
+    path: /blog/post/delete/{id}
+    defaults: { _controller:JrkPortfolioBackBundle:BlogPost:delete, id:-1 }
+    
+####################################
+#           Tools
+###################################
+jrk_portfolio_back_tools_switch:
+    path: /tools/switch/{id}/{fullbundle}/{entity}/{attribute}
+    defaults: { _controller:JrkPortfolioBackBundle:Tools:switch, id:-1, fullbundle:'', entity:'',attribute:'' }
+
+jrk_portfolio_back_tools_switch_unique:
+    path: /tools/switch/unique/{id}/{fullbundle}/{entity}/{attribute}
+    defaults: { _controller:JrkPortfolioBackBundle:Tools:switchUnique, id:-1, fullbundle:'', entity:'',attribute:'' }
+
+jrk_portfolio_back_tools_edit_inplace:
+    path:     /tools/edit/inplace/{entityName}/{entityFullBundle}
+    defaults: { _controller: JrkPortfolioBackBundle:Tools:editInplace }
+
+
+
+
+####################################
+#           Configuraiton
+###################################
+
+jrk_portfolio_back_configuration_list:
+    path:     /configuration/list/{page}/{limit}
+    defaults: { _controller: JrkPortfolioBackBundle:Configuration:list, page:1, limit:20 }
+
+jrk_portfolio_back_configuration_edit:
+    path:     /configuration/edit/{id}
+    defaults: { _controller: JrkPortfolioBackBundle:Configuration:edit, id:-1 }
+
+jrk_portfolio_back_configuration_add:
+    path:     /configuration/add/{name}
+    defaults: { _controller: JrkPortfolioBackBundle:Configuration:add, name:-1 }
+
+jrk_portfolio_back_configuration_delete:
+    path:     /configuration/delete/{name}
+    defaults: { _controller: JrkPortfolioBackBundle:Configuration:delete, name:-1 }

@@ -1,0 +1,357 @@
+ ///************************************************************
+// *  @_Project : (Project name)
+// *  @_Date : (DD/MM/YY)
+// *  @_Author : German Pichardo
+// *
+// *  ---------------
+// *  @_Description :
+// *  ---------------
+// *
+// *  File name
+// *
+// ************************************************************/
+//
+///************************************************************
+// *  ------------
+// *  - Summary -
+// *  ------------
+// *
+// *  @_04 Transition :
+// *  @_05 Border-Radius : (left, right, bottom, top)
+// *  @_06 Box-Shadow :
+// *  @_07 Text-Shadow :
+// *  @_08 Opacity :
+// *  @_09 : Paddings (left, right, bottom, top)
+// *  @_10 : Margins (left, right, bottom, top)
+// *  @_11 : Borders (left, right, bottom, top)
+// *  @_12 : Font-Size
+// *  @_13 : Text-Align
+// *  @_14 : Utilities
+// *  @_15 : Responsive
+// *  @_14 : Gradients
+// *
+// ************************************************************/
+//
+///************************************************************
+// *  @_04 : Transitions
+// ************************************************************/
+
+@mixin transition-ease-out($time) {
+  -webkit-transition: all $time ease-out;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all $time ease-out;  /* Firefox 4-15 */
+  -o-transition: all $time ease-out;  /* Opera 10.50–12.00 */
+  transition: all $time ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+@mixin transition-ease-in-out($time) {
+  -webkit-transition: all $time ease-in-out;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all $time ease-in-out;  /* Firefox 4-15 */
+  -o-transition: all $time ease-in-out;  /* Opera 10.50–12.00 */
+  transition: all $time ease-in-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+@mixin transition-linear($time) {
+  -webkit-transition: all $time linear;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all $time linear;  /* Firefox 4-15 */
+  -o-transition: all $time linear;  /* Opera 10.50–12.00 */
+  transition: all $time linear;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+///************************************************************
+// *  @_05 : Border-Radius
+// ************************************************************/
+
+@mixin border-radius($value) {
+  -webkit-border-radius: $value; /* Android ≤ 1.6, iOS 1-3.2, Safari 3-4 */
+  border-radius: $value; /* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ */
+  -moz-border-radius: $value;
+  -o-border-radius: $value;
+  -ms-border-radius: $value;
+  -moz-background-clip:padding-box;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+}
+// Single side border-radius
+
+@mixin border-top-radius($value) {
+  -webkit-border-top-right-radius: $value;
+  border-top-right-radius: $value;
+  -webkit-border-top-left-radius: $value;
+  border-top-left-radius: $value;
+  -moz-background-clip:padding-box;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+}
+@mixin border-right-radius($value) {
+  -webkit-border-bottom-right-radius: $value;
+  border-bottom-right-radius: $value;
+  -webkit-border-top-right-radius: $value;
+  border-top-right-radius: $value;
+  -moz-background-clip:padding-box;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+}
+@mixin border-bottom-radius($value) {
+  -webkit-border-bottom-right-radius: $value;
+  border-bottom-right-radius: $value;
+  -webkit-border-bottom-left-radius: $value;
+  border-bottom-left-radius: $value;
+  -moz-background-clip:padding-box;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+}
+@mixin border-left-radius($value) {
+  -webkit-border-bottom-left-radius: $value;
+  border-bottom-left-radius: $value;
+  -webkit-border-top-left-radius: $value;
+  border-top-left-radius: $value;
+  -moz-background-clip:padding-box;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+}
+
+///************************************************************
+// *  @_06 : Box-Shadow
+// ************************************************************/
+
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value !important; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+  box-shadow: $value !important; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+  -moz-box-shadow: $value !important;
+}
+
+///************************************************************
+// *  @_07 : Text-Shadow
+// ************************************************************/
+
+@mixin text-shadow($x: 0, $y: 1px, $blur: 5px, $color: rgba(0,0,0,.4)){
+  text-shadow: $x $y $blur $color;
+  //text-shadow:white($opacity) 0 1px 0;
+}
+
+///************************************************************
+// *  @_08 : Opacity
+// ************************************************************/
+
+@mixin opacity($value){
+  $valueIE:($value*100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$valueIE})"; /* IE 8 */
+  filter: alpha(opacity=$valueIE); /* IE 5-7 */
+  -moz-opacity: $value; /* Netscape */
+  -khtml-opacity: $value; /* Safari 1.x */
+  opacity: $value; /* Good browsers */
+}
+
+///************************************************************
+// *  @_11 : Borders (left, right, bottom, top)
+// ************************************************************/
+@mixin border($border-width: 1px , $border-style: solid , $border-color: red){
+  border: $border-width $border-style $border-color;
+}
+@mixin border-left($border-width: 1px , $border-style: solid , $border-color: red){
+  border-left: $border-width $border-style $border-color;
+}
+@mixin border-right($border-width: 1px , $border-style: solid , $border-color: red){
+  border-right: $border-width $border-style $border-color;
+}
+@mixin border-bottom($border-width: 1px , $border-style: solid , $border-color: red){
+  border-bottom: $border-width $border-style $border-color;
+}
+@mixin border-top($border-width: 1px , $border-style: solid , $border-color: red){
+  border-top: $border-width $border-style $border-color;
+}
+
+///************************************************************
+// *  @_12 : Font-Size
+// ************************************************************/
+
+@mixin font-size($value){
+  font-size: $value;
+}
+
+///************************************************************
+// *  @_13 : Text-Align
+// ************************************************************/
+
+@mixin text-align($direction) {
+  text-align: $direction;
+}
+
+///************************************************************
+// *  @_14 : Utilities
+// ************************************************************/
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin vertical-center ($height) {
+  display: table-cell;
+  height: $height;
+  vertical-align: middle;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+@mixin list-style {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+///************************************************************
+// *  @_15 : Arrow
+// * @include triangle within a pseudo element and add positioning properties (ie. top, left)
+// * $direction: up, down, left, right
+// ************************************************************/
+
+@mixin arrow-triangle($direction, $size: 6px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+///************************************************************
+// *  @_15 : Responsive Media queries
+// ************************************************************/
+
+@mixin responsive($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type == string {
+    $class: $min;
+
+    @if $class == xs {
+      @media (max-width: 767px) { @content; }
+    }
+
+    @else if $class == sm {
+      @media (min-width: 768px) { @content; }
+    }
+
+    @else if $class == md {
+      @media (min-width: 992px) { @content; }
+    }
+
+    @else if $class == lg {
+      @media (min-width: 1200px) { @content; }
+    }
+
+    @else {
+      @warn "Breakpoint mixin supports: xs, sm, md, lg";
+    }
+  }
+  @else if $type == number {
+    $query: "all" !default;
+    @if $min != 0 and $max != 0 {
+      $query: "(min-width: #{$min}) and (max-width: #{$max})";
+    }
+    @else if $min != 0 and $max == 0 {
+      $query: "(min-width: #{$min})";
+    }
+    @else if $min == 0 and $max != 0 {
+      $query: "(max-width: #{$max})";
+    }
+    @media #{$query} {
+      @content;
+    }
+  }
+}
+// EXAMPLES:
+
+// @include responsive($min: 321px, $max: 479px) {
+// 	background-color: red;
+// }
+
+// aside.primary {
+//   @include responsive(md) {
+//     float: right;
+//     width: 350px;
+//   }
+//   @include responsive(480px) {
+//     display: none;
+//   }
+//   @include responsive($min: 640px, $max: 767px) {
+//     text-align: center;
+//     font-style: italic;
+//   }
+// }
+
+///************************************************************
+// *  @_16 : Gradients
+// ************************************************************/
+
+@mixin linear-gradient( $start: #f1f1f1, $from: 0%, $stop: #d9d9d9, $to: 100% ) {
+
+  background: $start;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(ie-hex-str($start)), to(ie-hex-str($stop)));
+
+  background: -moz-linear-gradient(center top, $start $from, $stop $to);
+
+  background: -moz-gradient(center top, $start $from, $stop $to);
+
+  background: -webkit-linear-gradient(top, $start $from,$stop $to);
+
+  background: -o-linear-gradient(top, $start $from,$stop $to);
+
+  background: -ms-linear-gradient(top, $start $from,$stop $to);
+
+  background: linear-gradient(to bottom, $start $from,$stop $to);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str($start)}', endColorstr='#{ie-hex-str($stop)}',GradientType=0 );
+
+}
+
+///************************************************************
+// *  @_17 : Hover
+// ************************************************************/
+ @mixin hover-focus-active {
+   &:hover,
+   &:active,
+   &:focus {
+     @content;
+   }
+ }
+//@mixin hoverActiveFocus($property, $value) {
+//  &:hover, &:active, &:focus {
+//    #{$property}: $value;
+//  }
+//}

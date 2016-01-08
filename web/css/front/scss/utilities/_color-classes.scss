@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@import '../_variables.scss';
+@import '../_mixin.scss';
+///************************************************************
+// *  @_00 : Theme-Colors from Variable
+// ************************************************************/
+
+$spring-colors: (
+        white: $white,               // White
+        grey-1: $grey-1,               // Grey-Light
+        grey-2: $grey-2,               // Grey-Medium
+        grey-3: $grey-3,               // Grey-Medium-Font
+        grey-4: $grey-4,               // Grey-Medium-Font
+
+        oneam-1: $oneam-1,             // Blue-Light
+        oneam-2: $oneam-2,             // Blue-Medium
+        orange-1: $orange-1,
+        red-1: $red-1,
+
+        blue-1: $blue-1,             // Blue-Light
+        green-1: $green-1,             // Blue-Light
+        violet-1: $violet-1,             // Violet-Light
+
+        brown-1: $brown-1,             // Green-Aqua-Light
+        brown-2: $brown-2,             // Green-Aqua-Medium
+        brown-3: $brown-3,             // Green-Aqua-Medium
+);
+
+// @each directive loops through all of my key/value pairs in the $theme-colors map
+// $theme-color is the variable name I am using for the key
+// $color is the variable name I am using for the value
+// Collect EACH theme color name value in the $theme-colors map
+@each $spring-color, $color in $spring-colors {
+
+  // Display the theme color at the end of our selector name
+  .bg-#{$spring-color} {
+    // Use the theme color value as the background color
+    background-color: $color;
+    &.btn {
+      @include hover-focus-active {
+        background-color: darken($color,5%);
+      }
+      &.active {
+        background-color: darken($color,5%);
+      }
+      color: $white;
+      &[class^='blue-'],
+      &[class*='blue-'] {
+        color: $white;
+      }
+      &[class^='grey-'],
+      &[class*='grey-'] {
+        color: $grey-2;
+      }
+      &[class^='grey-2'],
+      &[class*='grey-2'] {
+        color: $grey-1;
+      }
+    }
+    &.bb-3 {
+      border-bottom: 3px solid darken($color,5%);
+    }
+  }
+
+  // Use the color name as the selctor name for our foreground color
+  .#{$spring-color} {
+    // Assign our color value to the color property
+    color: $color;
+    [class^='blue-'] &,
+    [class*='blue-'] &{
+      text-shadow: 1px 0 rgba(black,.1);
+    }
+  }
+}

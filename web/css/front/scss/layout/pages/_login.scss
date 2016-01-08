@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@import '../../_variables';
+@import '../../_mixin';
+
+/*************************************
+* @_00
+*************************************/
+
+.login-panel {
+
+  margin-top:170px;
+  margin-bottom:170px;
+
+  label {
+    color: $oneam-1;
+  }
+}
+
+

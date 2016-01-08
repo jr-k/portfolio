@@ -1,0 +1,18 @@
+parameters:
+#    jrk_portfolio_back.example.class: Jrk\Portfolio\BackBundle\Example
+
+services:
+#    jrk_portfolio_back.example:
+#        class: %jrk_portfolio_back.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    twig.extension.routing_extra:
+         class: Jrk\Portfolio\BackBundle\Twig\Extension\RoutingExtraExtension
+         arguments: [@service_container,@doctrine.orm.entity_manager,@twig]
+         tags:
+             - { name: twig.extension }
+
+    twig.extension.filters_front:
+         class: Jrk\Portfolio\BackBundle\Twig\Extension\FiltersFront
+         arguments: [%translation%,@service_container,@doctrine.orm.entity_manager,@twig]
+         tags:
+             - { name: twig.extension }

@@ -1,0 +1,39 @@
+{% verbatim %}
+<a class="hidden" id="general_modal_trigger" href="#general_modal"></a>
+
+<div id="general_modal" class="popbox std_modal"></div>
+
+<div id="skeleton_modal" class="popbox std_modal">
+    <div class="std_modal">
+        <div class="clearfix {{=it.modalClass}}">
+            <div class="std_head_modal {{=it.headerClass}}">
+                <h4 class="mb0 white-color f18 modal-title">{{=it.title}}</h4>
+            </div>
+            <div class="std_modal_content">
+                <div class="clearfix grey-2" style="margin-top:{{=it.marginTop}}px;margin-bottom:{{=it.marginBottom}}px;font-size:{{=it.fontSize}}px;color:{{=it.color}}">
+                    <span class="modal-label">
+                        {{=it.message}}
+                    </span>
+                </div>
+                <div class="form_std_row row bt1 tar">
+                    <div class="clearfix mt10 mr10">
+
+                        {{? it.multiple }}
+                            {{~it.choices :choice:index}}
+                            <a class="btn btn-tiny navlog device-btn {{=choice.buttonClass}}" href="{{? choice.url }}{{=choice.action}}{{??}}javascript:void(0);{{?}}" __onclick__="{{? !choice.url }}{{=choice.action}}{{?}}">
+                                {{=choice.label}}
+                            </a>
+                            {{~}}
+                        {{??}}
+                            <a class="btn btn-tiny navlog device-btn btn-red" href="javascript:javascript:void(0);" onclick="$.fancybox.close();">{{=it.closeLabel}}</a>
+                        {{?}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
+
+

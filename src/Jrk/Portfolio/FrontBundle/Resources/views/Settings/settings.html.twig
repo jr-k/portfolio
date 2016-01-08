@@ -1,0 +1,150 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout-home.html.twig' %}
+
+
+
+{% block addscriptjs %}
+    {{ parent() }}
+    <script src="{{ asset('js/front/settings.js') }}"></script>
+
+{% endblock %}
+
+{% block container %}
+
+    <div role="main" class="settings">
+        <section class="section-block pt15">
+            <div class="container">
+                <div class="row" style="min-height: 700px;">
+
+
+                    <div class="col-sm-8">
+                        <h1 class="heading-title mbt15">
+                            Change password
+                        </h1>
+
+                        <div class="wrap_panel material light-material no-hover ml0 sub-block">
+                            <div class="wrap_body pbt15 clearfix">
+
+                                {# Show confirmation password changed #}
+                                {% for message in app.session.flashbag.get('change_password') %}
+                                    <div class="append-message mb20 relative material material-green">
+                                        <button type="button" class="close close-sm mr10 mt20" data-dismiss="alert">
+                                            <i class="icon-remove"></i>
+                                        </button>
+                                        <div class="wrap_heading">
+                                            <h4 class="green mb0 f14 bold mt0">
+                                                <i class="icon-check opaci45"></i>
+                                                {{ message }}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                                <div class="clearfix">
+                                    <form method="POST">
+                                        <div class="form_feed_row row">
+                                            <div class="col-md-12">
+                                                <fieldset>
+                                                    <div class="form-group {% if form_invalid(formChangePassword.current_password) %}error-input{% endif %}">
+                                                        <div class="form_feed_row row">
+                                                            <label for="{{ formChangePassword.plainPassword.second.vars.id }}" class="col-lg-4 col-md-4 col-sm-2 col-xs-12 control-label">
+                                                                {{ 'front_settings_settings_change_password_current'|t }}
+                                                            </label>
+                                                            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                                                                {{ form_widget(formChangePassword.current_password,{attr:{class:'form-control no-radius input-md text-uppercase'}}) }}
+                                                                {{ form_errors(formChangePassword.current_password) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group {% if form_invalid(formChangePassword.plainPassword.first) %}error-input{% endif %}">
+                                                        <div class="form_feed_row row">
+                                                            <label for="{{ formChangePassword.plainPassword.second.vars.id }}" class="col-lg-4 col-md-4 col-sm-2 col-xs-12 control-label">
+                                                                {{ 'front_settings_settings_change_password_new'|t }}
+                                                            </label>
+                                                            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                                                                {{ form_widget(formChangePassword.plainPassword.first,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                {{ form_errors(formChangePassword.plainPassword.first) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group {% if form_invalid(formChangePassword.plainPassword.second) %}error-input{% endif %}">
+                                                        <div class="form_feed_row row">
+                                                            <label for="{{ formChangePassword.plainPassword.second.vars.id }}" class="col-lg-4 col-md-4 col-sm-2 col-xs-12 control-label">
+                                                                {{ 'front_settings_settings_change_password_confirmation'|t }}
+                                                            </label>
+                                                            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                                                                {{ form_widget(formChangePassword.plainPassword.second,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                {{ form_errors(formChangePassword.plainPassword.second) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        {{ form_rest(formChangePassword) }}
+                                        <div class="form_feed_row row">
+                                            <div class="col-md-12 row-btn-prev-next">
+                                                <div class="control-group">
+                                                    <div class="controls pull-right">
+                                                        <button type="submit" class="btn btn-material material-blue">
+                                                            {{ 'front_settings_settings_change_password_save'|t }}
+                                                        </button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1 class="heading-title mbt15">
+                            {{ 'front_settings_settings_delete_account_title'|t }}
+                        </h1>
+
+
+                        <div class="wrap_panel material light-material no-hover ml0 sub-block">
+                            <div class="wrap_body pbt15 clearfix tal">
+
+                                {{ 'front_settings_settings_delete_account_description'|t }}
+
+                                <form id="delete_account_form" method="POST" class="hidden">
+                                    {{ form_widget(formDeleteAccount.deleted) }}
+                                    {{ form_rest(formDeleteAccount) }}
+                                </form>
+
+                                <button type="button" class="btn btn-material material-portfolio mt10 bold delete_account_trigger" target-form="#delete_account_form" style="margin-left:0px;">
+                                    <i class="fa fa-warning mr5"></i>
+                                    {{ 'front_settings_settings_delete_account_confirm'|t }}
+                                </button>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+
+
+
+{% block javascript_vars %}
+    <script>
+        var modalDeleteAccount = {
+            title: 'Supression de votre compte',
+            message: 'Êtes-vous sûr de vouloir désactiver votre compte',
+            marginTop:10,
+            marginBottom:10,
+            choices: [
+                {label: 'Oui', action: 'deleteAccount(__this__)', url:false, buttonClass: 'material-blue'},
+                {label: 'Non', action: '$.fancybox.close()', url:false, buttonClass: 'material-red'}
+            ]
+        };
+    </script>
+{% endblock %}

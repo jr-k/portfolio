@@ -1,0 +1,196 @@
+{% extends 'JrkPortfolioBackBundle:Layout:layout.html.twig' %}
+
+
+{% block container %}
+    {{ parent() }}
+
+    <div id="content" class="banner-portfolio-wrap no-bg testmbti mb30 mt80">
+        <div class="container">
+
+            {% set title = 'Nouveau' %}
+            {% if not new %}
+                {% set title = entity.subject %}
+            {% endif %}
+
+            {% include '::breadcrumb.html.twig' with {items: [
+            {label: 'Dashboard', link: path('jrk_portfolio_back_homepage'), icon:'icon-home'},
+            {label: 'Tous les posts', link: path(route_list)},
+            {label: title, link: path(route_edit,{id:entity.id})}
+            ]}%}
+
+            <div class="wrap_panel panel-default">
+                <div class="wrap_heading actif">
+                    <h3>
+                        {{ title }}
+                    </h3>
+                </div>
+                <div class="mt20 panel-collapse collapse in">
+                    <div class="wrap_body">
+                        <div class="form-horizontal clearfix p10">
+                            <form method="POST" {{ form_enctype(form) }}>
+
+                                <div class="form_std_row row">
+
+                                    {######################
+                                    #   LEFT
+                                    #######################}
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <div class="form-group {% if form_invalid(form.attachment) %}error-input{% endif %}">
+                                                <div class="form_std_row row">
+                                                    {{ form_label(form.attachment,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                        <div class="col-lg-6" style="overflow:auto">
+                                                            {% if entity.file != '' %}
+                                                                <img class="mb10" src="{{ entity.file | imagine_filter('pic_blog_post') | dateCache }}" alt=" ">
+                                                            {% endif %}
+                                                        </div>
+
+                                                        <div class="fileupload clearfix block fileupload-new" data-provides="fileupload">
+                                                        <span class="btn btn-file plr15 grey-2">
+                                                            <span class="fileupload-new">
+                                                                <i class="icon-paper-clip"></i>
+                                                                <span class="hpxs">Select icon</span>
+                                                            </span>
+                                                            {{ form_widget(form.attachment) }}
+                                                            {{ form_errors(form.attachment) }}
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+                                    </div>
+
+                                    {######################
+                                    #   RIGHT
+                                    #######################}
+                                    <div class="col-md-6">
+                                        <fieldset>
+
+                                            <div class="form-group {% if form_invalid(form.active) %}error-input{% endif %}">
+                                                <div class="form_std_row row">
+                                                    {{ form_label(form.active,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12">
+                                                        {{ form_widget(form.active,{attr:{class:'form-control no-radius customselect'}}) }}
+                                                        {{ form_errors(form.active) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group birthday-group sel3 {% if form_invalid(form.published) %}error-input{% endif %}">
+                                                <div class="form_std_row row group_sel">
+                                                    {{ form_label(form.published,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12">
+                                                        <div class="form-inline">
+                                                            {{ form_widget(form.published.date.day,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                            {{ form_widget(form.published.date.month,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                            {{ form_widget(form.published.date.year,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-inline mt10">
+                                                            {{ form_widget(form.published.time.hour,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                            {{ form_widget(form.published.time.minute,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                        </div>
+                                                    </div>
+                                                    {{ form_errors(form.published) }}
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group birthday-group sel3 {% if form_invalid(form.created) %}error-input{% endif %}">
+                                                <div class="form_std_row row group_sel">
+                                                    {{ form_label(form.created,null,{'label_attr':{class:'col-lg-6 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12">
+                                                        <div class="form-inline">
+                                                            {{ form_widget(form.created.day,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                            {{ form_widget(form.created.month,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                            {{ form_widget(form.created.year,{attr:{class:'customselect form-control no-radius'}}) }}
+                                                        </div>
+                                                    </div>
+                                                    {{ form_errors(form.created) }}
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                {######################
+                                #   FULL
+                                #######################}
+                                <div class="form_std_row row">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            {% embed "JrkPortfolioBackBundle:Layout:form-translation-container.html.twig" with {formTrans:form.translations} %}
+                                                {% block widgets %}
+                                                    <div class="form-group {% if form_invalid(form.subject) %}error-input{% endif %}">
+                                                        <div class="form_std_row row">
+                                                            {{ form_label(form.subject,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                            <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                {{ form_widget(form.subject,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                {{ form_errors(form.subject) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group {% if form_invalid(form.excerpt) %}error-input{% endif %}">
+                                                        <div class="form_std_row row">
+                                                            {{ form_label(form.excerpt,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                            <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                {{ form_widget(form.excerpt,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                {{ form_errors(form.excerpt) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group {% if form_invalid(form.content) %}error-input{% endif %}">
+                                                        <div class="form_std_row row">
+                                                            {{ form_label(form.content,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                            <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                {{ form_widget(form.content,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                {{ form_errors(form.content) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                {% endblock %}
+                                            {% endembed %}
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                {######################
+                                #   ACTIONS
+                                #######################}
+                                <div class="clearfix"></div>
+
+
+                                <div class="form_std_row row">
+                                    <div class="col-md-6 row-btn-prev-next mt10 pb15">
+                                        <div class="control-group pull-left fnsm">
+                                            <div class="controls">
+                                                {{ form_widget(form.save,{attr:{class:'btn champsuivant device-btn'}}) }}
+                                                {{ form_widget(form.save_and_add,{attr:{class:'btn champsuivant device-btn'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 row-btn-prev-next mt10 pb15">
+                                        <div class="control-group pull-right fnsm">
+                                            <div class="controls">
+                                                {{ form_widget(form.save_and_stay,{attr:{class:'btn btn-aqua champsuivant device-btn'}}) }}
+                                                <a class="btn btn-red champsuivant device-btn" href="{{ path(route_list) }}">Retour à la liste</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

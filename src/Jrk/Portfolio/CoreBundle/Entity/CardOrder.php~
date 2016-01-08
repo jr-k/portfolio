@@ -1,0 +1,411 @@
+<?php
+
+namespace Jrk\Magicard\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * CardOrder
+ *
+ * @ORM\Table(name="magicard_card_order")
+ * @ORM\Entity(repositoryClass="Jrk\Magicard\CoreBundle\Repository\CardOrderRepository")
+ */
+class CardOrder
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zipcode", type="string", length=255)
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=255, nullable=true)
+     */
+    private $reference;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Jrk\Magicard\CoreBundle\Entity\Ticket", mappedBy="cardOrder", cascade={"persist","remove"})
+     */
+
+    protected $tickets;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Jrk\Magicard\CoreBundle\Entity\CardOrderState", mappedBy="cardOrder")
+     */
+    protected $cardOrderStates;
+
+
+    public function __construct()
+    {
+
+    }
+
+    public function __toString()
+    {
+        return $this->lastname.'.'.$this->firstname[0];
+    }
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return CardOrder
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string 
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return CardOrder
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return CardOrder
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return CardOrder
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return CardOrder
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set zipcode
+     *
+     * @param string $zipcode
+     * @return CardOrder
+     */
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+    
+        return $this;
+    }
+
+    /**
+     * Get zipcode
+     *
+     * @return string 
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return CardOrder
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return CardOrder
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return PrivateMessage
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function cleanTicketValue()
+    {
+        if (is_array($this->getTickets())) {
+            foreach($this->getTickets() as $ticket) {
+                $value = $ticket->getValue();
+                $value = str_replace(' ','',$value);
+                $ticket->setValue($value);
+            }
+        }
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \Jrk\Magicard\CoreBundle\Entity\Ticket $tickets
+     * @return CardOrder
+     */
+    public function addTicket(\Jrk\Magicard\CoreBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+        $tickets->setCardOrder($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Jrk\Magicard\CoreBundle\Entity\Ticket $tickets
+     */
+    public function removeTicket(\Jrk\Magicard\CoreBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    public function generateReference()
+    {
+        $this->reference = 'D'.date('Y').'-'.str_pad($this->getId(), 6, "0", STR_PAD_LEFT);
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     * @return CardOrder
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string 
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+}

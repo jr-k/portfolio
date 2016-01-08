@@ -1,0 +1,53 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% if not is_granted("ROLE_ADMIN") %}
+
+         {% if error %}
+             <div class="mt10 mb20" style="color:red;">{{ error.messageKey|trans({}, 'FOSUserBundle') }}</div>
+         {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="POST">
+
+            <div class="form-group {% if error %}error-input{% endif %}">
+                <div class="form_jrk_row row">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="step1a_nationality">
+                        {{ 'security.login.username'|trans({}, 'FOSUserBundle') }}
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <input type="text" name="_username" value="{{ last_username }}" required="required" class="form-control no-radius input-md" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt20 {% if error %}error-input{% endif %}">
+                <div class="form_jrk_row row">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="step1a_nationality">
+                        {{ 'security.login.password'|trans({}, 'FOSUserBundle') }}
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <input type="password" name="_password" required="required" class="form-control no-radius input-md" />
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <div class="form_jrk_row row">
+                <div class="col-md-12 row-btn-prev-next plr0">
+                    <div class="control-group pull-right mr15">
+                        <div class="controls">
+                            <button type="submit" class="btn material material-portfolio champsuivant device-btn">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% else %}
+    <p class="pbt10">
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.name}, 'FOSUserBundle') }} |
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+    </p>
+    {% endif %}
+{% endblock %}

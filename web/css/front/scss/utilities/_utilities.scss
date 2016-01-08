@@ -1,0 +1,1133 @@
+@charset "UTF-8";
+@import '../_variables.scss';
+@import '../_mixin.scss';
+///************************************************************
+// *  @_Author : German Pichardo
+// *
+// *  ---------------
+// *  @_Description :
+// *  ---------------
+// *
+// *  Personal utilities file to use into the HTML without modifying the css
+// *
+// ************************************************************/
+//
+///************************************************************
+// *  ------------
+// *  - Summary -
+// *  ------------
+// *
+// *  @_01 Clear :                  .c-(abbreviation)
+// *  @_02 Display :                .d-(abbreviation)
+// *  @_03 Vertical-Align :         .va-(value)
+// *  @_04 Float :                  .f-(value)
+// *  @_05 Visibility :             .invisible
+// *  @_06 Row with children padding : div.row.colp(value)
+// *  @_07 Cursor :                 .c-(abbreviation)
+// *  @_08 Color Inherit on a:hover : .c-(inherit)
+// *  @_09 Font-Size :              .f(size 8-40)
+// *  @_10 Text-Shadow :            .ts-(color)
+// *  @_11 Font-Weight :            .fw-(abbreviation)
+// *  @_12 Text-Transform :         .tt-(abbreviation)
+// *  @_13 Text-Decoration :        .td-(abbreviation)
+// *  @_14 Font-Style :             .fs-(abbreviation)
+// *  @_15 Text-Overflow :          .to-(abbreviation)
+// *  @_16 White-Espace :           .ws-(value)
+// *  @_17 Line-Height :            .lh-(value)
+// *  @_18 Text-Alignment :         .ta-(value)
+// *  @_19 Overflow                 .of(axis)-(value)
+// *  @_20 Width :                  .w-(abbreviation)
+// *  @_21 Max-Width :              .max-w(value)
+// *  @_22 Min-Width :              .min-w(value)
+// *  @_23 Height :                 .h-(value)
+// *  @_24 Position :               .p-(value) || .(value)
+// *  @_25 Box-Shadow :             .box-shadow-(value)
+// *  @_26 Border-Radius :          .radius-(direction)(value)
+// *  @_27 Opacity :                .o-(value 15-85)
+// *  @_28 Border :                 .b-(value) || .b(direction)-(value)
+// *  @_29 Backgrounds :            .bg-(color)
+// *  @_30 Margins :                .m(value 0-30) || .ml(value 0-30) || .mr(value 0-30) || .mb(value 0-30) || .mt(value 0-30)
+// *  @_31 Margin-Left-Right :      .mlr(value 0-30)
+// *  @_32 Margin-Bottom-Top :      .mbt(value 0-30)
+// *  @_33 Padding :                .p(side)(value 0-30) || .pl(value 0-30) || .pr(value 0-30) || .pb(value 0-30) || .pt(value 0-30)
+// *  @_34 Padding-Left-Right :     .plr(value 0-30)
+// *  @_35 Padding-Bottom-Top :     .pbt(value 0-30)
+// *
+// ************************************************************/
+
+///************************************************************
+// *  @_01 : Clear : .c-(abbreviation)
+// ************************************************************/
+
+.clear {
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+}
+
+.c-l  {
+  clear: left;
+}
+
+.c-r {
+  clear: right;
+}
+
+.clear-both,
+.c-b {
+  clear: both;
+}
+
+///************************************************************
+// *  @_02 : Display : .d-(abbreviation)
+// ************************************************************/
+
+.block,
+.d-b {
+  display: block !important;
+}
+
+.inline-block,
+.d-ib {
+  display: inline-block;
+  *display: inline;
+  *z-index: 1 !important;
+}
+
+.d-tb {
+  display: table;
+}
+.d-tb-c {
+  display: table-cell;
+}
+
+///************************************************************
+// *  @_03 : Vertical-align : .va-(value)
+// ************************************************************/
+
+.va-middle {
+  vertical-align: middle;
+}
+
+.va-top {
+  vertical-align: top;
+}
+
+///************************************************************
+// *  @_04 : Float : .f-(value)
+// ************************************************************/
+
+.f-none {
+    float: none !important;
+}
+.f-left {
+    float: left !important;
+}
+.f-right {
+    float: right !important;
+}
+
+///************************************************************
+// *  @_05 : Visibility
+// ************************************************************/
+
+.invisible {
+    visibility: hidden;
+}
+
+///************************************************************
+// *  @_06 : Row with children padding : .row.colp(value)
+// ************************************************************/
+
+.colp0 > [class*='col-'] {
+  padding-left:0px;
+  padding-right:0px;
+}
+.colp5 > [class*='col-'] {
+  padding-left:5px;
+  padding-right:5px;
+}
+.colp10 > [class*='col-'] {
+  padding-left:10px;
+  padding-right:10px;
+}
+.colp20 > [class*='col-'] {
+  padding-left:20px;
+  padding-right:20px;
+}
+
+///************************************************************
+// *  @_07 : Cursor : .c-(abbreviation)
+// ************************************************************/
+
+.c-p,
+.clickable {
+    cursor: pointer;
+}
+
+.c-d,
+.no-clickable {
+    cursor: default !important;
+}
+
+.c-na,
+.no-allowed {
+  cursor: not-allowed !important;
+}
+
+///************************************************************
+// *  @_08 : Color Inherit on a:hover
+// ************************************************************/
+
+//Color inherit
+.c-i,
+.c-i:hover,
+.c-i:focus{
+    color: inherit;
+}
+
+///************************************************************
+// *  @_09 : Font-Size : .f(value 8-40)
+// ************************************************************/
+
+.f8  { @include font-size(8px);}
+.f10 { @include font-size(10px);}
+.f11 { @include font-size(11px);}
+.f12 { @include font-size(12px);}
+.f13 { @include font-size(13px);}
+.f14 { @include font-size(14px);}
+.f15 { @include font-size(15px);}
+.f16 { @include font-size(16px);}
+.f17 { @include font-size(17px);}
+.f18 { @include font-size(18px);}
+.f19 { @include font-size(19px);}
+.f20 { @include font-size(20px);}
+.f21 { @include font-size(21px);}
+.f22 { @include font-size(22px);}
+.f23 { @include font-size(23px);}
+.f24 { @include font-size(24px);}
+.f25 { @include font-size(25px);}
+.f26 { @include font-size(26px);}
+.f28 { @include font-size(28px);}
+.f30 { @include font-size(30px);}
+.f32 { @include font-size(32px);}
+.f40 { @include font-size(40px);}
+///************************************************************
+// *  @_09 : Font-Family : .ff-name-(type)
+// ************************************************************/
+.ff-bebas-light {
+  font-family:"bebas_neuelight" ;
+}
+.ff-bebas-regular {
+  font-family:"bebas_neueregular" ;
+}
+.ff-bebas-bold {
+  font-family:"bebas_neuebold" ;
+}
+.ff-roboto-regular {
+  font-family:"robotoregular" ;
+}
+.ff-roboto-bold {
+  font-family: 'Roboto-Bold';
+}
+
+///************************************************************
+// *  @_10 : Text-Shadow : .ts-(color)
+// ************************************************************/
+
+.ts-black {
+  @include text-shadow(0,1px, null, rgba(0,0,0,.5));
+}
+
+.ts-white {
+  @include text-shadow(0,1px, null, rgba(255, 255, 255, 0.5));
+}
+
+///************************************************************
+// *  @_11 : Font-Weight : .fw-(abbreviation)
+// ************************************************************/
+
+.normal,
+.fw-n {
+    font-weight: normal;
+}
+
+.bold,
+.fw-b {
+    font-weight: bold !important;
+}
+
+///************************************************************
+// *  @_12 : Text-Transform : .tt-(abbreviation)
+// ************************************************************/
+
+.upper,
+.tt-u {
+    text-transform: uppercase;
+}
+.lower,
+.tt-l {
+    text-transform: lowercase;
+}
+
+///************************************************************
+// *  @_13 : Text-Decoration : .td-(abbreviation)
+// ************************************************************/
+
+a.td-n,
+a.td-n:hover,
+a.td-n:hover i,
+a.td-n:focus,
+a.td-n:focus i,
+a.td-n:active,
+a.td-n:active i {
+  text-decoration: none !important;
+}
+
+.td-u,
+a.td-u:hover {
+    text-decoration: underline;
+}
+
+///************************************************************
+// *  @_14 : Font-Style : .fs-(abbreviation)
+// ************************************************************/
+
+.italic,
+.fs-i {
+    font-style: italic;
+}
+
+.fs-n {
+  font-style: normal;
+}
+
+///************************************************************
+// *  @_15 : Text-Overflow : .to-(abbreviation)
+// ************************************************************/
+
+.ellip,
+.to-e {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.to-i {
+  text-overflow: inherit;
+}
+
+///************************************************************
+// *  @_16 : White-Espace : .ws-(value)
+// ************************************************************/
+
+.ws-normal {
+    white-space: normal;
+}
+.ws-nowrap{
+    white-space: nowrap;
+}
+
+///************************************************************
+// *  @_17 : Line-Height : .lh-(value)
+// ************************************************************/
+
+.lh-n {
+    line-height: normal;
+}
+
+.lh-12 {
+    line-height: 12px;
+}
+.lh-18 {
+    line-height: 18px;
+}
+
+///************************************************************
+// *  @_18 : Text-Alignment : .ta-(value)
+// ************************************************************/
+
+.ta-left,
+.tal {
+  @include text-align(left);
+}
+
+.ta-center,
+.tac {
+  @include text-align(center);
+}
+
+.ta-right,
+.tar {
+  @include text-align(right);
+}
+
+.ta-justify,
+.justify {
+  @include text-align(justify);
+}
+
+
+///************************************************************
+// *  @_19 : Overflow .of(axis)-(value)
+// ************************************************************/
+
+.of-visible {
+    overflow: visible;
+}
+.of-hidden {
+  overflow: hidden;
+}
+.ofx-visible {
+    overflow-x: visible;
+}
+.ofx-hidden {
+  overflow-x: hidden;
+}
+.ofx-scroll {
+  overflow-x: scroll;
+}
+.ofy-visible {
+    overflow-y: visible;
+}
+.ofy-hidden {
+  overflow-y: hidden;
+}
+.ofy-scroll {
+  overflow-y: scroll;
+}
+
+///************************************************************
+// *  @_20 : Width : .w-(abbreviation)
+// ************************************************************/
+
+.w-1 {
+    width: 1%;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.w-100 {
+  width:100% !important;
+}
+
+///************************************************************
+// *  @_21 : Max-Width : .max-w(value)
+// ************************************************************/
+
+.max-w100 {
+  max-width: 100%;
+}
+.max-w18 {
+  max-width: 18px;
+}
+.max-w32 {
+  max-width: 32px;
+}
+.max-w64 {
+  max-width: 64px;
+}
+.max-w90 {
+  max-width: 90px;
+}
+.max-w120 {
+  max-width: 120px;
+}
+.max-w160 {
+  max-width: 160px;
+}
+
+.center {
+  @include center-block;
+}
+
+///************************************************************
+// *  @_22 : Min-Width : .min-w(value)
+// ************************************************************/
+
+.min-w100 {
+  min-width: 100% !important;
+}
+
+///************************************************************
+// *  @_23 : Height : .h-(value)
+// ************************************************************/
+
+.h-100 {
+  height: 100%;
+}
+.h-auto {
+  height: auto !important;
+}
+
+///************************************************************
+// *  @_24 : Position : .p-(value) || .(value)
+// ************************************************************/
+
+.relative,
+.p-relative {
+    position: relative;
+}
+
+.absolute,
+.p-absolute {
+    position: absolute;
+}
+.static,
+.p-static {
+    position: static;
+}
+.fixed,
+.p-fixed {
+  position: static;
+}
+///************************************************************
+// *  @_25 : Box-Shadow : .box-shadow-(value)
+// ************************************************************/
+
+.box-shadow {
+  @include box-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.no-shadow,
+.bs-0 {
+ @include box-shadow(none);
+}
+
+///************************************************************
+// *  @_26 : Border-Radius : .radius-(direction)(value)
+// ************************************************************/
+
+.no-radius {
+  @include border-radius(0);
+}
+.radius-4 {
+  @include border-radius(4px);
+}
+.radius-5 {
+  @include border-radius(5px);
+}
+.radius-b5 {
+  @include border-bottom-radius (5px);
+}
+.radius-t5 {
+  @include border-top-radius (5px);
+}
+.radius-l5 {
+  @include border-left-radius (5px);
+}
+.radius-r5 {
+  @include border-right-radius (5px);
+}
+
+///************************************************************
+// *  @_27 : Opacity : .o-(value 15-85)
+// ************************************************************/
+
+.o-15 {
+  @include opacity(0.15);
+}
+
+.o-25 {
+  @include opacity(0.25);
+}
+
+.o-35 {
+  @include opacity(0.35);
+}
+
+.o-45 {
+  @include opacity(0.45);
+}
+
+.o-55 {
+  @include opacity(0.55);
+}
+
+.o-65 {
+  @include opacity(0.65);
+}
+
+.o-75 {
+  @include opacity(0.75);
+}
+
+.o-85 {
+  @include opacity(0.85);
+}
+
+///************************************************************
+// *  @_28 : Border : .b-(value) || .b(direction)-(value)
+// ************************************************************/
+
+.no-border,
+.b-0 {
+  border: 0 !important;
+}
+
+.bt-0 {
+  @include border-top(0);
+}
+
+.bt-1 {
+  @include border-top($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.bb-0 {
+  @include border-bottom($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.bb-1 {
+  @include border-bottom($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.bl-0 {
+  @include border-left($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.bl-1 {
+  @include border-left($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.br-0 {
+  @include border-right($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+.br-1 {
+  @include border-right($border-width:1px, $border-style: solid, $border-color:blue);
+}
+
+///************************************************************
+// *  @_29 : Backgrounds : .bg-(color)
+// ************************************************************/
+
+.bg-0,
+.no-bg {
+    background: none !important;
+}
+
+///************************************************************
+// *  @_30 : Margins : .m(side)(value 0-30)
+// ************************************************************/
+
+.no-margin,
+.m0 {
+  margin:0;
+}
+
+.m0a {
+  margin:0 auto;
+}
+
+.m2 {
+  margin:2px;
+}
+
+.m5 {
+  margin:5px;
+}
+
+.m10{
+  margin:10px;
+}
+
+.m15  {
+  margin:15px;
+}
+
+.m20 {
+  margin:20px;
+}
+
+.m25 {
+  margin:25px;
+}
+
+.m30 {
+  margin:30px;
+}
+
+///************************************************************
+// *  @_30-a : Margin-Left : .ml(value)
+// ************************************************************/
+
+.ml0 {
+  margin-left:0 !important;
+}
+
+.ml1 {
+  margin-left:1px;
+}
+
+.ml2 {
+  margin-left:2px;
+}
+
+.ml5 {
+  margin-left:5px;
+}
+
+.ml10 {
+  margin-left:10px;
+}
+
+.ml15 {
+  margin-left:15px;
+}
+
+.ml20 {
+  margin-left:20px;
+}
+
+.ml25 {
+  margin-left:25px;
+}
+
+.ml30 {
+  margin-left:30px;
+}
+
+///************************************************************
+// *  @_30-b : Margin-Right : .mr(value)
+// ************************************************************/
+
+.mr0 {
+  margin-right:0;
+}
+
+.mr2 {
+  margin-right:2px;
+}
+
+.mr5 {
+  margin-right:5px;
+}
+
+.mr10 {
+  margin-right:10px;
+}
+
+.mr15 {
+  margin-right:15px;
+}
+
+.mr20 {
+  margin-right:20px;
+}
+
+.mr25 {
+  margin-right:25px;
+}
+
+.mr30 {
+  margin-right:30px;
+}
+
+///************************************************************
+// *  @_30-c : Margin-Bottom : .mb(value)
+// ************************************************************/
+
+.mb0 {
+  margin-bottom:0;
+}
+
+.mb2 {
+  margin-bottom:2px;
+}
+
+.mb5 {
+  margin-bottom:5px;
+}
+
+.mb10 {
+  margin-bottom:10px;
+}
+
+.mb15 {
+  margin-bottom:15px;
+}
+
+.mb20 {
+  margin-bottom:20px;
+}
+
+.mb25 {
+  margin-bottom:25px;
+}
+
+.mb30 {
+  margin-bottom:30px;
+}
+
+///************************************************************
+// *  @_30-d : Margin-Top : .mt(value)
+// ************************************************************/
+
+.mt0 {
+  margin-top:0;
+}
+
+.mt2 {
+  margin-top:2px;
+}
+
+.mt5 {
+  margin-top:5px;
+}
+
+.mt10 {
+  margin-top:10px;
+}
+
+
+.mt15 {
+  margin-top:15px;
+}
+
+.mt20 {
+  margin-top:20px;
+}
+
+.mt25 {
+  margin-top:25px;
+}
+
+.mt30 {
+  margin-top:30px;
+}
+
+///************************************************************
+// *  @_31 : Margin-Left-Right : .mlr(value 0-30)
+// ************************************************************/
+
+.mlr0 {
+  margin-left:0;
+  margin-right:0;
+}
+.mlr5 {
+  margin-left:5px;
+  margin-right:5px;
+}
+.mlr10 {
+  margin-left:10px;
+  margin-right:10px;
+ }
+.mlr15 {
+  margin-left:15px;
+  margin-right:15px;
+}
+.mlr20 {
+  margin-left:20px;
+  margin-right:20px;
+}
+.mlr30 {
+
+  margin-left:30px;
+  margin-right:30px;
+}
+
+///************************************************************
+// *  @_32 : Margin-Bottom-Top : .mbt(value 0-30)
+// ************************************************************/
+
+.mbt0 {
+  margin-bottom:0;
+  margin-top:0;
+}
+.mbt5 {
+  margin-bottom:5px;
+  margin-top:5px;
+}
+.mbt10 {
+  margin-bottom:10px;
+  margin-top:10px;
+}
+.mbt15 {
+  margin-bottom:15px;
+  margin-top:15px;
+}
+.mbt20 {
+  margin-bottom:20px;
+  margin-top:20px;
+}
+.mbt30 {
+  margin-bottom:30px;
+  margin-top:30px;
+}
+
+///************************************************************
+// *  @_33 : Padding: .p(value 0-30)
+// ************************************************************/
+
+
+.no-padding,
+.p0 {
+  padding:0;
+}
+
+.p2 {
+  padding:2px;
+}
+
+.p5 {
+  padding:5px;
+}
+
+.p10{
+  padding:10px;
+}
+
+.p15  {
+  padding:15px;
+}
+
+.p20 {
+  padding:20px;
+}
+
+.p25 {
+  padding:25px;
+}
+
+.p30 {
+  padding:30px;
+}
+
+///************************************************************
+// *  @_33-a : Padding-Left : .pl(value 0-30)
+// ************************************************************/
+
+.pl0 {
+  padding-left:0;
+}
+
+.pl1 {
+  padding-left:1px;
+}
+
+.pl2 {
+  padding-left:2px;
+}
+
+.pl5 {
+  padding-left:5px;
+}
+
+.pl10 {
+  padding-left:10px;
+}
+
+.pl15 {
+  padding-left:15px;
+}
+
+.pl20 {
+  padding-left:20px;
+}
+
+.pl25 {
+  padding-left:25px;
+}
+
+.pl30 {
+  padding-left:30px;
+}
+
+///************************************************************
+// *  @_33-b : Padding-Right : .pr(value 0-30)
+// ************************************************************/
+
+.pr0 {
+  padding-right:0;
+}
+
+.pr5 {
+  padding-right:5px;
+}
+
+.pr10 {
+  padding-right:10px;
+}
+
+.pr15 {
+  padding-right:15px;
+}
+
+.pr20 {
+  padding-right:20px;
+}
+
+.pr25 {
+  padding-right:25px;
+}
+
+.pr30 {
+  padding-right:30px;
+}
+
+///************************************************************
+// *  @_33-c : Padding-Bottom : .pb(value 0-30)
+// ************************************************************/
+
+.pb0 {
+  padding-bottom:0;
+}
+
+.pb5 {
+  padding-bottom:5px;
+}
+
+.pb10 {
+  padding-bottom:10px;
+}
+
+.pb15 {
+  padding-bottom:15px;
+}
+
+.pb20 {
+  padding-bottom:20px;
+}
+
+.pb25 {
+  padding-bottom:25px;
+}
+
+.pb30 {
+  padding-bottom:30px;
+}
+
+///************************************************************
+// *  @_33-d : Padding-Top : .pt(value 0-30)
+// ************************************************************/
+
+.pt0 {
+  padding-top:0;
+}
+
+.pt5 {
+  padding-top:5px;
+}
+
+.pt10 {
+  padding-top:10px;
+}
+
+.pt15 {
+  padding-top:15px;
+}
+
+.pt20 {
+  padding-top:20px;
+}
+
+.pt25 {
+  padding-top:25px;
+}
+
+.pt30 {
+  padding-top:30px;
+}
+.pt40 {
+  padding-top:40px;
+}
+.pt45 {
+  padding-top:45px;
+}
+.pt50 {
+  padding-top:50px;
+}
+
+///************************************************************
+// *  @_34 : Padding-Left-Right : .plr(value 0-30)
+// ************************************************************/
+
+.plr0 {
+  padding-left:0;
+  padding-right:0;
+}
+.plr5 {
+  padding-left:5px;
+  padding-right:5px;
+}
+.plr10 {
+  padding-left:10px;
+  padding-right:10px;
+}
+.plr15 {
+  padding-left:15px;
+  padding-right:15px;
+}
+.plr20 {
+  padding-left:20px;
+  padding-right:20px;
+}
+
+///************************************************************
+// *  @_35 : Padding-Bottom-Top : .pbt(value 0-30)
+// ************************************************************/
+.pbt0 {
+  padding-bottom:0;
+  padding-top:0;
+}
+.pbt5 {
+  padding-bottom:5px;
+  padding-top:5px;
+}
+.pbt10 {
+  padding-bottom:10px;
+  padding-top:10px;
+}
+.pbt15 {
+  padding-bottom:15px;
+  padding-top:15px;
+}
+.pbt20 {
+  padding-bottom:20px;
+  padding-top:20px;
+}
+
+.pbt30 {
+  padding-bottom:30px;
+  padding-top:30px;
+}
+
+
+///************************************************************
+// *  @_36 : Position top
+// ************************************************************/
+
+.top0 {
+  top:0px;
+}
+
+.z-index100 {
+  z-index:100;
+}
+.z-index101 {
+  z-index:101;
+}
+.z-index1000 {
+  z-index:1000;
+}
+.z-index1001 {
+  z-index:1001;
+}
+.z-index10000 {
+  z-index:10000;
+}
+.z-index10001 {
+  z-index:10001;
+}
+
+
+.cfont {
+  font-family: "bebas_neueregular";
+}
+
+span.oneam {
+  color:#E30049;
+}

@@ -1,0 +1,56 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_FAKE: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        custom: 
+            id: jrk_portfolio_user.off_provider
+#        chain_provider:
+#            chain:
+#                providers: [in_memory, user_db]
+#        user_db:
+#            entity: { class: Oxygene\Feed\UserBundle\Entity\User, property: email }
+#        in_memory:
+#            memory:
+#                users:
+#                    fallback_admin: { password: 123jrk, roles: 'ROLE_ADMIN' }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: custom
+                remember_me: true
+                check_path: fos_user_security_check
+            anonymous: true
+            logout:
+                path: fos_user_security_logout
+                target: jrk_portfolio_back_homepage
+                invalidate_session: false
+            switch_user: true
+
+        secured_area:
+            pattern:    ^/back/
+            form_login:
+                check_path: fos_user_security_check
+                login_path: fos_user_security_login
+            logout:
+                path:   fos_user_security_logout
+                target: fos_user_security_logout
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/back, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_MEMBER }

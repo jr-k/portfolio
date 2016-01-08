@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="{{ app.request.locale }}"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="{{ app.request.locale }}"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="{{ app.request.locale }}"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="{{ app.request.locale }}">
+<!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>{% block html_title %}{{ 'html_title'|t }}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="description" content="">
+        <meta name="keywords" content="Portfolio">
+        <meta name="author" content="Portfolio">
+
+        {% block additionnal_meta %}
+            <link rel="image_src" href="{{ asset('favicon-96x96.png') }}"/>
+            <meta property="og:image" content="{{ asset('favicon-96x96.png') }}"/>
+            <meta property="og:title" content="Portfolio"/>
+            <meta property="og:url" content="{{ current_url() }}"/>
+            <meta property="og:description" content=""/>
+        {% endblock %}
+
+        <link href="{{ asset('fonts/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+
+        {#WebApp-Icons#}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
+
+        <!--[if lt IE 9]>
+        <script src="{{ asset('js/common/fallback/lt-ie-9.min.js') }}"></script>
+        <![endif]-->
+
+        <link href="{{ asset('css/common/vendor/select2.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/common/vendor/jquery.fancybox.css') }}">
+
+
+        <link rel="stylesheet" href="{{ asset('css/theme/bootstrap.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+
+        <link rel="stylesheet" href="{{ asset('css/theme/animate.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/theme/creative.css') }}" type="text/css">
+
+
+        <link rel="stylesheet" href="{{ asset('css/front/main.css') }}">
+
+
+        {% block addscriptcss %}{% endblock addscriptcss %}
+    </head>
+
+    <body id="page-top" class="{% block body_class %}{% endblock %}">
+        <div id="wrapper-loader"><div><img src="{{ asset('images/ajax-main-action.png') }}" alt="Loading..." title="Loading" /></div></div>
+
+        {% block nav %}{% endblock %}
+
+        {% block header %}{% endblock %}
+
+        {% block container %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+        {% block popups %}{% endblock %}
+
+        {% include '::popup.html.twig' %}
+
+        <script src="{{ asset('js/common/vendor/modernizr-2.6.2.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery-ui-1.10.3.custom.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/select2.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/doT.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery.nicescroll.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery.scrollTo.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/bootstrap/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/common/plugins.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/custom.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/ajax-loader.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/popup.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('js/theme/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('js/theme/jquery.fittext.js') }}"></script>
+        <script src="{{ asset('js/theme/wow.min.js') }}"></script>
+        <script src="{{ asset('js/theme/creative.js') }}"></script>
+
+        <script src="{{ asset('js/front/main.js') }}" type="text/javascript"></script>
+
+        {# Gateway for translation and static vars #}
+        {% block javascript_vars %}{% endblock %}
+
+
+        {# Block for additionnal custom .js per page #}
+        {% block addscriptjs %}{% endblock %}
+
+
+        {# Inject js into views, DEV ONLY #}
+        <script>{% block additionnaljs %}{% endblock %}</script>
+
+        {# For social sharing urls & scripts #}
+        {% block social %}{% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,18 @@
+
+####################################################
+#               HOME
+####################################################
+
+jrk_portfolio_front_homepage:
+    path:     /
+    defaults: { _controller: JrkPortfolioFrontBundle:Home:homepage }
+
+
+
+####################################################
+#               CONTACT
+####################################################
+jrk_portfolio_front_contact:
+    path:     /contact
+    defaults: { _controller: JrkPortfolioFrontBundle:Contact:contact }
+

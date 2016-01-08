@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import '../../_variables';
+@import '../../_mixin';
+
+/*************************************
+* @_00
+*************************************/
+
+.comment-item {
+  font-weight: normal;
+  font-size:14px;
+
+  .bodycomment {
+    font-weight:normal;
+    color:#999;
+  }
+}

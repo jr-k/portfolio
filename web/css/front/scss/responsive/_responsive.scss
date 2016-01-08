@@ -1,0 +1,127 @@
+@charset "UTF-8";
+@import '../variables.scss';
+@import '../mixin.scss';
+//@if $class == xs {
+//  @media (max-width: 767px) { @content; }
+//}
+//
+//@else if $class == sm {
+//  @media (min-width: 768px) { @content; }
+//}
+//
+//@else if $class == md {
+//  @media (min-width: 992px) { @content; }
+//}
+//
+//@else if $class == lg {
+//  @media (min-width: 1200px) { @content; }
+//}
+
+/************************************************************
+ *  @_00 : XXS : max-width: 480px
+ ************************************************************/
+@include responsive($max: 480px) {
+
+}
+/************************************************************
+ *  @_00 : XS : max-width: 767px
+ ************************************************************/
+@include responsive(xs) {
+
+  .out.language-index {
+    padding-top:25px !important;
+  }
+
+  .desktop-language {
+    display:none;
+  }
+
+  .mobile-language {
+    display:block;
+  }
+}
+/************************************************************
+ *  @_00 : SM : min-width: 768px
+ ************************************************************/
+
+@include responsive(sm) {
+  .pbt15-sm {
+    padding:15px 0;
+  }
+
+
+  .desktop-language {
+    display:none;
+  }
+
+  .mobile-language {
+    display:block;
+  }
+}
+
+/************************************************************
+ *  @_00 : MD : min-width: 992px
+ ************************************************************/
+
+@include responsive(md) {
+
+
+  .desktop-language {
+    display:block;
+  }
+
+  .mobile-language {
+    display:none;
+  }
+}
+
+/************************************************************
+ *  @_00 : LG : min-width: 1200px
+ ************************************************************/
+
+@include responsive(lg) {
+
+}
+
+
+
+
+
+
+
+/************************************************************
+ *  @_00 : LG : min-width: MIXED
+ ************************************************************/
+@media (max-width: 450px) {
+  .search-left-group {
+    background: none;
+    padding-left: 0px;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  #section-wall .layout #freewall .flag-message {
+     font-size: 40px;
+     top:84px;
+  }
+}
+@media (max-width: 860px) {
+  #section-wall .layout #freewall .flag-message {
+     font-size: 30px;
+     top:114px;
+  }
+}
+@media (max-width: 630px) {
+  #section-wall .layout #freewall .flag-message {
+     font-size: 25px;
+     top:124px;
+  }
+}
+@media (max-width: 520px) {
+  #section-wall .layout #freewall .flag-message {
+     font-size: 18px;
+     font-family: "Tahoma","sans-serif";
+     top:115px;
+  }
+}

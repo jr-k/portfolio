@@ -1,0 +1,273 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout-home.html.twig' %}
+
+{% block addscriptjs %}
+    {{ parent() }}
+    <script src="{{ asset('js/front/homepage.js') }}"></script>
+{% endblock %}
+
+
+{% block javascript_vars %}
+    <script>
+        jQuery(function(){
+            {% if formContactSubmitted %}
+                document.location.hash = 'contact';
+            {% endif %}
+        });
+    </script>
+{% endblock %}
+
+
+{% block header %}
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Ninja Developer</h1>
+                <hr>
+                <p>I love coding in general, website, mobile apps for desktop applications. I can develop a custom solution for your business, fast enough :D</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+
+
+{% block container %}
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Who am I ?</h2>
+                    <hr class="light">
+                    <p class="text-faded">
+                        I'm a ninja.
+                    </p>
+                    <a href="#portfolio" class="scroll-to btn btn-default btn-xl">See my projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">There are my skills, I'm ready to code !</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <img class="wow bounceIn" src="{{ asset('images/theme/skills/nodejs.png') }}" alt="" />
+                        <h3>NodeJS</h3>
+                        <p class="text-muted">console.log('I\'m ready');</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <img class="wow bounceIn" src="{{ asset('images/theme/skills/symfony2.png') }}" alt="" />
+                        <h3>Symfony2</h3>
+                        <p class="text-muted">echo "I love Symfony2";</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <img class="wow bounceIn" src="{{ asset('images/theme/skills/android.png') }}" alt="" />
+                        <h3>Android</h3>
+                        <p class="text-muted">Log.d("I'm able to code in JAVA");</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <img class="wow bounceIn" src="{{ asset('images/theme/skills/python.png') }}" alt="" />
+                        <h3>Python</h3>
+                        <p class="text-muted">print('Do I need parenthesis ?')</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+
+                {% for project in projects %}
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="#" class="portfolio-box">
+                            <img src="{{ project.picture | imagine_filter('project_cover') | dateCache }}" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        {{ project.category }}
+                                    </div>
+                                    <div class="project-name">
+                                        {{ project.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="{{ asset('images/theme/portfolio/2.jpg') }}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="{{ asset('images/theme/portfolio/3.jpg') }}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="{{ asset('images/theme/portfolio/4.jpg') }}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="{{ asset('images/theme/portfolio/5.jpg') }}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="{{ asset('images/theme/portfolio/6.jpg') }}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Download my curriculum vitae</h2>
+                <a href="{{ asset(CFG_FILE_FILE_CV) }}" target="_blank" class="btn btn-default btn-xl wow tada">Download CV</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="contact" id="contact">
+                    <div class="container">
+                        <div class="contact-main">
+
+                            <div class="col-lg-8 col-lg-push-2">
+
+                                {% for message in app.session.flashbag.get('contact_success') %}
+                                    <div class="alert alert-success form-control pb30 tac">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                                <form method="POST">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb5">
+                                        {{ form_widget(formContact.lastname,{attr:{class:'form-control',placeholder:formContact.lastname.vars.label}}) }}
+                                        {{ form_errors(formContact.lastname) }}
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb5">
+                                        {{ form_widget(formContact.firstname,{attr:{class:'form-control',placeholder:formContact.firstname.vars.label}}) }}
+                                        {{ form_errors(formContact.firstname) }}
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb5">
+                                        {{ form_widget(formContact.email,{attr:{class:'form-control',placeholder:formContact.email.vars.label}}) }}
+                                        {{ form_errors(formContact.email) }}
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt10">
+                                        {{ form_widget(formContact.message,{attr:{class:'form-control',placeholder:formContact.message.vars.label}}) }}
+                                        {{ form_errors(formContact.message) }}
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+
+                                    <div class="tac mt20">
+                                        {{ form_widget(formContact.save,{attr:{class:'btn btn-primary'}}) }}
+                                    </div>
+
+                                    {{ form_rest(formContact) }}
+
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

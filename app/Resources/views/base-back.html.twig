@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{{ 'html_title'|t }} - Back-office{% endblock %}</title>
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ asset('css/common/vendor/select2.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/common/vendor/jquery.fancybox.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/common/vendor/xeditable.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/common/vendor/jquery-ui-1.9.2.custom.css') }}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('css/back/bootstrap.min.css') }}">
+
+        <link href="{{ asset('css/back/utilities.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/back/inside.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/back/main.css') }}">
+        <link href="{{ asset('css/back/inside-responsive.css') }}" rel="stylesheet">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/apple-touch-icon/114x114.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/apple-touch-icon/114x114.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/apple-touch-icon/72x72.png') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon/57x57.png') }}">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        {% block addscriptcss %}{% endblock %}
+    </head>
+
+    <body role="di">
+
+        <div id="wrapper-loader"><div><img src="{{ asset('images/ajax-main-action.png') }}" alt="Loading..." title="Loading" /></div></div>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            {% block header %}{% endblock %}
+        </div>
+
+
+        <div class="container theme-showcase" role="main">
+            {% block container %}{% endblock %}
+        </div>
+
+
+        {% block footer %}{% endblock %}
+
+        {% include '::popup.html.twig' %}
+
+        <script src="{{ asset('js/common/vendor/modernizr-2.6.2.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery-ui-1.10.3.custom.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/select2.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/doT.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/jquery.autosize-min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/tablednd.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/vendor/bootstrap/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/common/vendor/xeditable.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/plugins.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/custom.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/ajax-loader.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/common/popup.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('js/back/entity-list.js') }}"></script>
+        <script src="{{ asset('js/back/entity-edit.js') }}"></script>
+
+        {% block addscriptjs %}{% endblock %}
+        <script>{% block additionnaljs %}{% endblock %}</script>
+    </body>
+</html>

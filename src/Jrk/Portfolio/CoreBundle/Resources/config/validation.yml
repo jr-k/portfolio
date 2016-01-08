@@ -1,0 +1,96 @@
+Jrk\Portfolio\CoreBundle\Entity\Contact:
+    properties:
+        lastname:
+            - NotBlank:
+                message: "Specify a lastname"
+                groups: [contact]
+            - Length:
+                minMessage: "At least {{ limit }} chars."
+                maxMessage: "Less than {{ limit }} chars."
+                min: 2
+                max: 50
+                groups: [contact]
+        firstname:
+            - NotBlank:
+                message: "Specify a firstname"
+                groups: [contact]
+            - Length:
+                minMessage: "At least {{ limit }} chars."
+                maxMessage: "Less than {{ limit }} chars."
+                min: 2
+                max: 50
+                groups: [contact]
+        email:
+            - NotBlank:
+                message: "Specify an email address"
+                groups: [contact]
+            - Email:
+                message: "Invalid email address"
+                groups: [contact]
+        message:
+            - NotBlank:
+                message: "Specify a message"
+                groups: [contact]
+            - Length:
+                minMessage: "At least {{ limit }} chars."
+                min: 2
+                groups: [contact]
+
+
+Jrk\Portfolio\CoreBundle\Entity\Newsletter:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            groups: [newsletter]
+            message: 'Cette adresse email est déjà prise'
+    properties:
+        lastname:
+            - NotBlank:
+                message: "Veuillez renseigner un nom"
+                groups: [newsletter]
+            - Length:
+                minMessage: "Votre nom doit faire au moins {{ limit }} chars."
+                maxMessage: "Less than {{ limit }} chars."
+                min: 2
+                max: 50
+                groups: [newsletter]
+        firstname:
+            - NotBlank:
+                message: "Veuillez renseigner un prénom"
+                groups: [newsletter]
+            - Length:
+                minMessage: "Votre nom doit faire au moins {{ limit }} chars."
+                maxMessage: "Less than {{ limit }} chars."
+                min: 2
+                max: 50
+                groups: [newsletter]
+        email:
+            - NotBlank:
+                message: "Veuillez renseigner une adresse email"
+                groups: [newsletter]
+            - Email:
+                message: "Cette adresse email semble invalide"
+                groups: [newsletter]
+
+Jrk\Portfolio\CoreBundle\Entity\Comment:
+    properties:
+        author:
+            - NotBlank:
+                message: "Veuillez renseigner un auteur"
+                groups: [comment]
+            - Length:
+                minMessage: "Le nom de l'auteur doit faire au moins {{ limit }} chars."
+                maxMessage: "Le nom de l'auteur ne peut pas être plus long que {{ limit }} chars."
+                min: 2
+                max: 50
+                groups: [comment]
+        message:
+            - NotBlank:
+                message: "Veuillez renseigner un message"
+                groups: [comment]
+            - Length:
+                minMessage: "Votre message doit faire au moins {{ limit }} chars."
+                maxMessage: "Less than {{ limit }} chars."
+                min: 2
+                max: 600
+                groups: [comment]

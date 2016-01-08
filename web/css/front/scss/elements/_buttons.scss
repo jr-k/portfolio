@@ -1,0 +1,110 @@
+@charset "UTF-8";
+@import '../variables.scss';
+@import '../mixin.scss';
+
+/*************************************
+* @_00
+*************************************/
+.btn {
+  &:hover,
+  &:active,
+  &:focus {
+    color: $brown-3;
+  }
+}
+
+
+
+.btn-tiny {
+  border: none;
+  text-shadow: none;
+  color: #ffffff;
+  background: #aab2bd;
+  -webkit-transition: background 0.3s ease-in;
+  -moz-transition: background 0.3s ease-in;
+  -o-transition: background 0.3s ease-in;
+  transition: background 0.3s ease-in;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  font-size: 12px;
+  padding: 4px 12px
+}
+
+/*************************************
+* @_00
+*************************************/
+.btn-oneam {
+  @include border(1px, solid, transparent);
+  @include border-radius(8px);
+  @include transition-ease-in-out(0.15s);
+  background-color: $oneam-1;
+  color: $white;
+  font-family: bebas_neuebold;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  &:hover,
+  &:active,
+  &:focus {
+    @include border(1px, solid, $brown-3);
+    color: $brown-3;
+    background-color: transparent;
+  }
+}
+
+.btn-line,
+.btn-line-dark {
+  @include border(1px, solid, $brown-3);
+  @include border-radius(8px);
+  @include transition-ease-in-out(0.35s);
+  color: $brown-3;
+  background-color: transparent;
+  font-family: bebas_neuebold;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  &:hover,
+  &:active,
+  &:focus {
+    @include border(1px, solid, transparent);
+    background-color: $oneam-1;
+    color: $white;
+  }
+}
+
+.btn-line-light {
+  @include border(2px, solid, $white);
+  @include border-radius(0);
+  @include transition-ease-in-out(0.35s);
+  color: $white;
+  background-color: transparent;
+  font-family: bebas_neuebold;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgba(0,0,0,0.1);
+    color: $white;
+    border-width: 2px;
+  }
+}
+
+.social-icons a {
+  display: inline-block;
+  position: relative;
+  padding-right: 44px;
+  line-height: 34px;
+  vertical-align: middle;
+}

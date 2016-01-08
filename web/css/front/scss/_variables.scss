@@ -1,0 +1,63 @@
+///************************************************************
+// *  @_Project : (Project name)
+// *  @_Date : (DD/MM/YY)
+// *  @_Author : German Pichardo
+// *
+// *  ---------------
+// *  @_Description :
+// *  ---------------
+// *
+// *  File name
+// *
+// ************************************************************/
+//
+///************************************************************
+// *  ------------
+// *  - Summary -
+// *  ------------
+// *
+// *  @_01 Colors project :
+// *  @_02 Extra columns :
+// *  @_03 Images path :
+// *
+// ************************************************************/
+//
+///************************************************************
+// *  @_01 : Colors
+// ************************************************************/
+
+$white: #fefefe;               // White
+
+$grey-1: #f0f0f0;               // Grey-Light
+$grey-2: #e6e9ed;               // Grey-Medium
+$grey-3: #474e5d;               // Grey-Medium-Font
+$grey-4: #808080;               // Grey-Medium-Font-2
+
+$oneam-1: #e30049;             // oneam-Light
+$oneam-2: #ba003a;             // oneam-Medium
+
+$orange-1: #EE7436;             // oneam-Light
+
+$red-1: #F93631;                // Red-1
+$red-2: #d32e2a;                // Red-1
+
+$brown-1: #a57e42;             // brown-Light
+$brown-2: #623f19;             // brown-Medium
+$brown-3: #29210C;             // brown-Medium
+
+$blue-1: #24A9E1;             // Blue-Light
+$blue-2: #2098cb;             // Blue-Light
+$green-1: #459000;             // Green-1
+$violet-1: #A13C5E;             // Violet-1
+
+
+
+///************************************************************
+// *  @_03 : Image-Path
+// ************************************************************/
+
+$assetPath : "../../";
+
+//Usage: background: url(#{$assetPath}background.jpg) repeat-x fixed 0 0;
+
+

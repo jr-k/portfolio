@@ -1,0 +1,182 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout-home.html.twig' %}
+
+
+{% block html_title %}
+    {{ 'html_title_simple'|t }} - {{ post.subject }}
+{% endblock %}
+
+{% block addscriptjs %}
+    {{ parent() }}
+    <script src="{{ asset('js/front/blog.js') }}"></script>
+{% endblock %}
+
+{% block additionnal_meta %}
+
+    {% if post.file == '' %}
+        <link rel="image_src" href="{{ asset('images/dash/logbg.jpg',null,true) }}"/>
+        <meta property="og:image" content="{{ asset('images/dash/logbg.jpg',null,true) }}"/>
+    {% else %}
+        <link rel="image_src" href="{{ asset(post.file,null,true) }}"/>
+        <meta property="og:image" content="{{ asset(post.file,null,true) }}"/>
+    {% endif %}
+
+    <meta property="og:title" content="{{ post.subject }}"/>
+    <meta property="og:url" content="{{ current_url() }}"/>
+    <meta property="og:description" content="{{ post.excerpt }}"/>
+{% endblock %}
+
+
+{% block container %}
+
+
+    <div role="main" class="settings">
+        <section class="section-block pt15">
+            <div class="container">
+
+
+                {% include '::breadcrumb.html.twig' with {items: [
+                    {label: 'Portfolio', link: path('jrk_portfolio_front_homepage'), icon:'fa fa-home'},
+                    {label: 'font_blog_blog_html_title_prefix_blog'|t, link: path('jrk_portfolio_front_blog')},
+                    {label: post.subject|truncate(55)}
+                ]}%}
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <article class="mb30 pb30" style="border-bottom:1px dashed #DDD;">
+                            <h1 class="heading-title mbt15">
+                                {{ post.subject }}
+
+                                <span class="f10" style="color:#888;font-family:Arial;">
+                                    {{ post.published|date('Y-m-d') }}
+                                </span>
+                            </h1>
+
+                            <div class="wrap_panel material selectable light-material no-hover ml0 sub-block">
+                                <div class="wrap_body pbt15 clearfix">
+                                    <div class="clearfix">
+
+
+                                        {% if post.file != '' %}
+                                            <div class="pull-left mr10 mb5">
+                                                <img class="opaci15" src="{{ post.file | imagine_filter('pic_blog_post_small') | dateCache }}" alt="{{ post.subject }}" />
+                                            </div>
+
+                                            <div class="pull-left tal">
+                                                {{ post.excerpt|raw }}
+                                            </div>
+
+                                        {% else %}
+                                            <div class="tal">
+                                                {{ post.excerpt|raw }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+
+                        {% for comment in post.comments %}
+                            <article class="mb10 pb10">
+                                <div class="wrap_panel material selectable light-material no-hover ml0 sub-block">
+                                    <div class="wrap_body clearfix">
+                                        <div class="clearfix comment-item">
+                                            <div class="tal bodycomment">
+                                                <em>
+                                                    Par
+                                                    <span class="portfolio-1">{{ comment.author }}</span>
+                                                    le
+                                                    <span class="f11">{{ comment.created|date('d/m/Y') }}</span>
+                                                </em>
+                                                <br />
+                                                <em>Message:</em> "{{ comment.message }}"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        {% endfor %}
+
+
+                        <article class="mb10 pb10">
+                            <div class="wrap_panel material selectable light-material no-hover ml0 sub-block">
+                                <div class="wrap_body clearfix">
+                                    <div class="clearfix">
+                                        <h3 class="black tal mt10 mb20">
+                                            Commentaires
+                                        </h3>
+                                        <form method="POST">
+
+                                            <div class="form-group {% if form_invalid(formComment.author) %}error-input{% endif %}">
+                                                <div class="form_std_row row">
+                                                    {{ form_label(formComment.author,null,{'label_attr':{class:'col-lg-3 col-md-3 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(formComment.author,{attr:{class:'form-control no-radius customselect'}}) }}
+                                                        {{ form_errors(formComment.author) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group {% if form_invalid(formComment.message) %}error-input{% endif %}">
+                                                <div class="form_std_row row">
+                                                    {{ form_label(formComment.message,null,{'label_attr':{class:'col-lg-3 col-md-3 col-sm-3 col-xs-12 control-label'}}) }}
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(formComment.message,{attr:{class:'form-control no-radius customselect'}}) }}
+                                                        {{ form_errors(formComment.message) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{ form_rest(formComment) }}
+
+
+                                            <div class="form-group">
+                                                <div class="form_std_row row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tar">
+                                                        <div class="pull-right">
+                                                            <button type="submit" class="btn material material-portfolio">
+                                                                {{ 'comment_btn'|t }}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+
+
+                    </div>
+
+                    <div style="margin-top:45px;">
+                        {% render(controller('JrkPortfolioFrontBundle:Block:rightMenu')) %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}
+
+
+
+{% block javascript_vars %}
+    <script>
+        var modalDeleteAccount = {
+            title: 'Supression de votre compte',
+            message: 'Êtes-vous sûr de vouloir désactiver votre compte',
+            marginTop:10,
+            marginBottom:10,
+            choices: [
+                {label: 'Oui', action: 'deleteAccount(__this__)', url:false, buttonClass: 'material-blue'},
+                {label: 'Non', action: '$.fancybox.close()', url:false, buttonClass: 'material-red'}
+            ]
+        };
+    </script>
+{% endblock %}

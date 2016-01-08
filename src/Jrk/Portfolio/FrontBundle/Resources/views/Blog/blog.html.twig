@@ -1,0 +1,100 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout-home.html.twig' %}
+
+
+{% block html_title %}
+    {{ 'html_title_simple'|t }} - {{ 'font_blog_blog_html_title_prefix_blog'|t }}
+{% endblock %}
+
+{% block addscriptjs %}
+    {{ parent() }}
+    <script src="{{ asset('js/front/blog.js') }}"></script>
+{% endblock %}
+
+{% block additionnal_meta %}
+    <link rel="image_src" href="{{ asset('images/dash/logbg.jpg',null,true) }}"/>
+    <meta property="og:image" content="{{ asset('images/dash/logbg.jpg',null,true) }}"/>
+    <meta property="og:url" content="{{ current_url() }}"/>
+{% endblock %}
+
+
+{% block container %}
+
+    <div role="main" class="settings blog">
+        <section class="section-block pt15">
+            <div class="container">
+
+
+                {% include '::breadcrumb.html.twig' with {items: [
+                {label: 'Portfolio', link: path('jrk_portfolio_front_homepage'), icon:'fa fa-home'},
+                {label: 'font_blog_blog_html_title_prefix_blog'|t, link: path('jrk_portfolio_front_blog')}
+                ]}%}
+
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        {% for post in entities %}
+                            <article class="pb30 {% if not loop.last %}mb30{% endif %}" style="border-bottom:1px dashed #DDD;">
+
+                                <a href="{{ path('jrk_portfolio_front_blog_view',{slug:post.slug}) }}" style="color:#555;">
+                                    <h1 class="heading-title mbt15">
+                                        {{ post.subject }}
+
+                                        <span class="f10" style="color:#888;font-family:Arial;">
+                                            {{ post.published|date('Y-m-d') }}
+                                        </span>
+                                    </h1>
+                                </a>
+
+
+                                <div class="wrap_panel material selectable light-material no-hover ml0 sub-block">
+                                    <div class="wrap_body pbt15 clearfix">
+                                            <div class="clearfix">
+
+                                                {% if post.file != '' %}
+                                                    <div class="pull-left mr10 mb5">
+                                                        <img class="opaci15" src="{{ post.file | imagine_filter('pic_blog_post_small') | dateCache }}" alt="{{ post.subject }}" />
+                                                    </div>
+
+                                                    <div class="pull-left tal">
+                                                        {{ post.excerpt|raw }}
+                                                    </div>
+
+                                                {% else %}
+                                                    <div class="tal">
+                                                        {{ post.excerpt|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </article>
+                        {% else %}
+                            <article>
+                                <h1 class="heading-title mbt15">
+                                    {{ 'front_blog_blog_noposts'|t }}
+                                </h1>
+                            </article>
+                        {% endfor %}
+
+
+                        {% if counter > 0 %}
+                            <div id="paginator" class="pagination">
+                                {{ pagerHtml|raw }}
+                            </div>
+                        {% endif %}
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div style="margin-top:45px;">
+                        {% render(controller('JrkPortfolioFrontBundle:Block:rightMenu')) %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,21 @@
+<ul class="breadcrumb ml0">
+    {% for item in items %}
+        {% if loop.last %}
+            <li class="active">
+                {% if item.icon is defined %}
+                    <i class="{{ item.icon }}"></i>
+                {% endif %}
+                {{ item.label }}
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ item.link }}" class="portfolio-1">
+                    {% if item.icon is defined %}
+                        <i class="{{ item.icon }}"></i>
+                    {% endif %}
+                    {{ item.label }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

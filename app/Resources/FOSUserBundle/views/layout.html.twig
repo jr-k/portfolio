@@ -1,0 +1,38 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout-home.html.twig' %}
+
+{% block addscriptjs %}
+    <script src="{{ asset('js/front/login.js') }}"></script>
+{% endblock %}
+
+{% block container %}
+
+    <div class="aside p20 bg-user">
+        <canvas id="network-anim"></canvas>
+
+
+        <div class="container marketing">
+
+            <div class="col-lg-6 col-lg-push-3 login-panel bg-white">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>
+                            Connexion
+                        </h1>
+                        <div class="mb30 bt1 grey-2">
+                            <p class="p2 mt10">
+                                {% block fos_user_content %}
+
+                                {% endblock %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+

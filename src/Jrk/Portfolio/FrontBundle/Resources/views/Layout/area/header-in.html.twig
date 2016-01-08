@@ -1,0 +1,78 @@
+
+<header id="main-header" class="navbar">
+    <div class="container">
+
+        <div class="col-md-6 col-xs-7 col-sm-4">
+            <div class="brand-header relative">
+                <a rel="home" href="{{ path('jrk_portfolio_front_homepage') }}" title="Portfolio">
+                    <img src="{{ asset('images/logo_name_c.png') }}" alt=" " title="Portfolio" width="200"/>
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6 col-xs-5 col-sm-8 clearfix">
+            <div class="form-bg-black navbar-form navbar-right pbt15-sm">
+
+
+
+                <nav class="form-group language-index mt2">
+                    {% include 'JrkPortfolioFrontBundle:Layout:area/language.html.twig' %}
+                </nav>
+
+
+
+                <div class=" pull-right relative mt2">
+                    <a class="dropdown-toggle btn-material material-white" data-toggle="dropdown">
+                        <i class="fa fa-user mr5"></i>
+                        <span class="hidden-xs">
+                            {{ app.user.email }}
+                        </span>
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu notif-right logout header-menu">
+
+                        <li class="li-droptitle w100">
+                            <a href="{{ path('jrk_portfolio_front_settings') }}">
+                                <img src="{{ asset('images/mobile/ic_action_settings.png') }}" width="16" />
+                                {{ 'front_layout_area_header_in_settings'|t }}
+                            </a>
+                        </li>
+
+
+                        <li class="li-droptitle  w100">
+                            <a href="{{ path('jrk_portfolio_front_blog') }}">
+                                <img src="{{ asset('images/mobile/ic_world.png') }}" width="16" />
+                                {{ 'front_layout_area_header_in_blog'|t }}
+                            </a>
+                        </li>
+
+                        <li class="li-droptitle  w100">
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                <img src="{{ asset('images/mobile/icm_logout.png') }}" width="16" />
+                                {{ 'front_layout_area_header_in_logout'|t }}
+                            </a>
+                        </li>
+
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="li-droptitle  w100">
+                            <a href="{{ path('jrk_portfolio_back_homepage') }}">
+                                <img src="{{ asset('images/mobile/ic_action_overflow_black.png') }}" width="16" />
+                                Admin
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</header>

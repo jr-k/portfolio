@@ -1,0 +1,57 @@
+{% extends 'JrkPortfolioFrontBundle:Layout:layout.html.twig' %}
+
+{% block additionnaljs %}
+    jQuery(function(){
+        $('#content').css('minHeight',$(window).height() - 100 + 'px');
+    });
+{% endblock %}
+
+
+{% block container %}
+
+    <div id="content" class="no-bg mb30">
+        <div class="container">
+            <h2 class="grey-2">
+                Désolé ! Une erreur est survenue
+            </h2>
+            <div class="row clearfix">
+                <div class="col-xs-12">
+                    <div class="wrap_panel mt20 mb0 b0">
+                        <div class="wrap_body p0sm">
+                            <div class="clearfix p20 tac">
+                                <span class="main-c http-error-code">
+                                    {{ status_code }}
+                                </span>
+                                <p class="f42 grey-3 mb30">
+                                    {{ status_text }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap_heading no-border-bottom">
+                <div class="row_footbtn row">
+                    <div class="col-md-12">
+                        <div class="control-group pull-right">
+                            <div class="controls">
+                                <a href="{{ path('jrk_portfolio_front_homepage') }}" class="btn p10 bold upper device-btn">
+                                    <i class="icon-reply opaci45 mr5"></i>
+                                    Retour à l'accueil
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+
+
+{% endblock %}

@@ -1,0 +1,175 @@
+@charset "UTF-8";
+@import '../../../_variables.scss';
+@import '../../../_mixin.scss';
+
+/*************************************
+* @_00 Header
+*************************************/
+#main-header {
+  @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.05));
+  @include border-radius(0);
+  border-bottom: 2px solid $oneam-2;
+  z-index: 2;
+  background: #EEE;
+//  min-height: 70px;
+  border-left-width: 0;
+  border-top-width: 0;
+  border-right-width: 0;
+  margin-bottom: 0;
+  &.affix  {
+    position: fixed;
+    background-color: #29210C;
+    height: 70px;
+  }
+  .navbar-nav {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @include responsive(xs) {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    > li > a {
+      @include border-radius(8px);
+
+      text-shadow: none;
+      line-height: 20px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+
+      @include responsive(xs) {
+        @include border-radius(0);
+      }
+      &:hover,
+      &:active,
+      &:focus, {
+        color: $brown-1;
+        background-color: transparent;
+        @include border(1px,solid,$brown-1);
+      }
+      &.signin {
+        color: $brown-1;
+        background-color: transparent;
+        @include border(1px,solid,$brown-1);
+      }
+      &.signup {
+        @include border(1px,solid,transparent);
+        background-color: $oneam-2;
+        color: $white;
+        @include responsive(xs) {
+          @include border(0);
+        }
+
+      }
+    }
+    > li:last-child > a {
+      margin-left: 10px;
+      @include responsive(xs) {
+        margin-left: 0;
+      }
+    }
+  }
+  .navbar-toggle {
+    z-index: 3;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-right: 0;
+    background-color: $oneam-2;
+    > span {
+      color: $white;
+    }
+    @include hover-focus-active {
+      background-color: $brown-1;
+      > span {
+        color: $white;
+      }
+    }
+  }
+  .brand-header {
+    @include responsive(xs) {
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    > a {
+      display: block;
+      margin: 22px -15px;
+      padding: 0;
+      float: left;
+
+    }
+    @include responsive(xs) {
+      @include clearfix;
+      > a {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+
+.user-login {
+  @include box-shadow(0 1px 1px rgba(0,0,0,.4) inset);
+  @include border-radius(10px);
+  @include border-bottom(1px, solid, rgba(255,255,255,.5));
+  margin: 22px -15px;
+  padding: 10px 15px;
+  background: #444;
+  background: rgba(0,0,0,.2);
+}
+
+/*************************************
+* @_00 Form Input
+*************************************/
+form#user-login-form {
+//  font-family: bebas_neueregular;
+  box-shadow: none !important;
+  margin: 0;
+  padding: 15px 0;
+
+  label {
+    font-size: 12px;
+    line-height: 12px;
+    color: $oneam-1;
+    display: block;
+    text-align: left;
+    font-weight: bold;
+  }
+  .form-control {
+    @include border-radius(0);
+    @include border(1px, solid, transparent);
+    @include box-shadow(0px 2px 0px 0px rgba(0,0,0,0.1));
+    min-height: 35px;
+    margin-bottom:0px;
+    padding: 5px 10px;
+    vertical-align: middle;
+    background-color: rgba(255,255,255,0.80);
+    &:focus {
+      border-color: transparent;
+      outline: 0;
+      @include box-shadow(0px 2px 0px 0px rgba(0,0,0,0.2));
+      background-color: $white;
+    }
+  }
+  .btn {
+    @include border(2px, solid, $oneam-1);
+    @include border-radius(0);
+    @include transition-ease-in-out(0.35s);
+    color: $oneam-1;
+    font-family: bebas_neuebold;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 31px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    &:hover,
+    &:active,
+    &:focus {
+      @include border(2px, solid, $brown-2);
+      color: $brown-3;
+      background-color: transparent;
+    }
+  }
+}

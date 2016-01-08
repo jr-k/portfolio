@@ -1,0 +1,15 @@
+jrk_portfolio_user_auth:
+    path:     /auth
+    defaults: { _controller: JrkPortfolioUserBundle:UserOperation:auth}
+
+jrk_portfolio_user_forgotten_password:
+    path:     /forgotten-password
+    defaults: { _controller: JrkPortfolioUserBundle:UserOperation:forgottenPassword}
+
+jrk_portfolio_user_forgotten_password_confirmation:
+    path:     /forgotten-password-confirmation/{token}
+    defaults: { _controller: JrkPortfolioUserBundle:UserOperation:forgottenPasswordConfirmation}
+
+jrk_portfolio_user_valid_email_confirmation:
+    path:     /email-confirmation/{token}
+    defaults: { _controller: JrkPortfolioUserBundle:UserOperation:validEmailConfirmation}

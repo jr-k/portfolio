@@ -1,0 +1,63 @@
+{% extends layout %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/lexiktranslation/css/translation.css') }}">
+{% endblock %}
+
+{% block title %}Traductions{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% block toolbar %}
+            <div class="page-header">
+                <h1>
+                    Traductions
+
+                    <div class="pull-right">
+                        <a href="{{ path('oxygene_feed_back_front_configuration_list') }}" role="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-back"></span>
+                            Revenir au back-office
+                        </a>
+
+                        {#
+                            <input type="hidden" value="{{ path('oxygene_feed_back_empty_cache',{route:current_route()}) }}" id="vurl" />
+                        #}
+
+                    </div>
+
+                </h1>
+            </div>
+        {% endblock toolbar %}
+
+        {% block data_grid %}
+            {% include 'LexikTranslationBundle:Translation:_ngGrid.html.twig' %}
+        {% endblock data_grid %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script>
+        var translationCfg = {
+            locales: {{ locales | json_encode | raw }},
+            inputType: '{{ inputType }}',
+            url: {
+                list: '{{ path('lexik_translation_list') }}',
+                update: '{{ path('lexik_translation_update', {'id': '-id-'}) }}',
+                invalidateCache: '{{ path('lexik_translation_invalidate_cache') }}'
+            },
+            label: {
+                hideCol: '{{ 'translations.show_hide_columns'|trans({}, 'LexikTranslationBundle') }}',
+                invalidateCache: '{{ 'translations.invalidate_cache'|trans({}, 'LexikTranslationBundle') }}',
+                saveRow: '{{ 'translations.save_row'|trans({}, 'LexikTranslationBundle') }}',
+                domain: '{{ 'translations.domain'|trans({}, 'LexikTranslationBundle') }}',
+                key: '{{ 'translations.key'|trans({}, 'LexikTranslationBundle') }}',
+                save: '{{ 'translations.save'|trans({}, 'LexikTranslationBundle') }}',
+                successMsg: '{{ 'translations.succesfully_updated'|trans({}, 'LexikTranslationBundle') }}',
+                errorMsg: '{{ 'translations.update_failed'|trans({}, 'LexikTranslationBundle') }}'
+            }
+        };
+    </script>
+    <script src="{{ asset('bundles/lexiktranslation/js/translation.js') }}"></script>
+{% endblock %}

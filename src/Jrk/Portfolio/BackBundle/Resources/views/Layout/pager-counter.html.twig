@@ -1,0 +1,20 @@
+{% if route_args is not defined %}
+    {% set route_args = {} %}
+{% endif %}
+
+{% set route_default_args = {limit:'!l!'} %}
+
+{% set route_all_args = route_default_args|merge(route_args) %}
+
+<p class="grey-3 f12 pull-left ml15">
+    <span class="main-action">{{counter}}</span> entrée(s)
+    {% set limits = [5,10,20,50,100] %}
+    {% if CFG_VALUE_BACK_PAGE_LIMITER is defined %}
+        {% set limits = CFG_VALUE_BACK_PAGE_LIMITER|split(',') %}
+    {% endif %}
+    <select name="limit" class="customselect form-control global-limit" action="{{ path(route_list,route_all_args) }}">
+        {% for limit in limits %}
+            <option value="{{ limit }}" {% if limit == app.request.get('limit') %}selected{% endif %}>{{ limit }}</option>
+        {% endfor %}
+    </select>
+</p>

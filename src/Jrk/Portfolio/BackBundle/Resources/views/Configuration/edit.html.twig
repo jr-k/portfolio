@@ -1,0 +1,150 @@
+{% extends 'JrkPortfolioBackBundle:Layout:layout.html.twig' %}
+
+
+{% block container %}
+    {{ parent() }}
+
+    <div id="content" class="banner-std-wrap no-bg testmbti mb30 mt80">
+        <div class="container">
+
+            {% set title = 'Nouveau' %}
+            {% if not new %}
+                {% set title = entity.description %}
+            {% endif %}
+
+            {% include '::breadcrumb.html.twig' with {items: [
+            {label: 'Dashboard', link: path('jrk_portfolio_back_homepage'), icon:'icon-home'},
+            {label: 'Tous les paramètres', link: path(route_list)},
+            {label: title, link: path(route_edit,{id:entity.id})}
+            ]}%}
+
+            <div class="wrap_panel panel-default">
+                <div class="wrap_heading actif">
+                    <h3>
+                        {{ title }}
+                    </h3>
+                </div>
+                <div class="mt20 panel-collapse collapse in">
+                    <div class="wrap_body">
+                        <div class="form-horizontal clearfix p10">
+                            <form method="POST" {{ form_enctype(form) }}>
+
+                                {% if entity.help != '' %}
+                                    <div class="form_std_row row">
+                                        <div class="col-md-12">
+                                            <div class="clearfix table-bordered">
+                                                <div class="bg-blue p10">
+                                                    <h3 class="f14 bold white m0">
+                                                        Aide
+                                                    </h3>
+                                                </div>
+                                                <div class="bg-gris-1">
+                                                    <div class="row clearfix">
+                                                        <div class="col-xs-12">
+                                                            <div class="p0sm">
+                                                                <div class="clearfix p10">
+                                                                    <p class="m10">
+                                                                        {{ entity.help|raw }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+
+                                {######################
+                                #   FULL
+                                #######################}
+                                <div class="form_std_row row">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            {% embed "JrkPortfolioBackBundle:Layout:form-translation-container.html.twig" with {formTrans:form.translations} %}
+                                                {% block widgets %}
+                                                    {% if entity.hastitle %}
+                                                        <div class="form-group {% if form_invalid(form.title) %}error-input{% endif %}">
+                                                            <div class="form_std_row row">
+                                                                {{ form_label(form.title,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                                <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                    {{ form_widget(form.title,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                    {{ form_errors(form.title) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+
+                                                    {% if entity.vartype == FILEUPLOAD %}
+                                                        <div class="form-group {% if form_invalid(form.attachment) %}error-input{% endif %}">
+                                                            <div class="form_std_row row">
+                                                                {{ form_label(form.attachment,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                                <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                    <a class="view-preview" href="{{ asset(entity.file(locale)) }}" rel="{{ asset(entity.file(locale)) }}" target="_blank">
+                                                                        <i class="icon-paper-clip"></i> Voir le fichier:
+                                                                        <strong>{{ entity.file(locale) | basename }}</strong>
+                                                                    </a>
+                                                                    <div class="fileupload clearfix block fileupload-new mt10" data-provides="fileupload">
+                                                                <span class="btn btn-file plr15 grey-2">
+                                                                    <span class="fileupload-new">
+                                                                        <i class="icon-paper-clip"></i>
+                                                                        <span class="hpxs"> Select file</span>
+                                                                    </span>
+                                                                    {{ form_widget(form.attachment) }}
+                                                                    {{ form_errors(form.attachment) }}
+                                                                </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="form-group {% if form_invalid(form.value) %}error-input{% endif %}">
+                                                            <div class="form_std_row row">
+                                                                {{ form_label(form.value,null,{'label_attr':{class:'col-lg-12 col-md-6 col-sm-3 col-xs-12 control-label'}}) }}
+                                                                <div class="col-lg-12 col-md-6 col-sm-9 col-xs-12 mt10">
+                                                                    {{ form_widget(form.value,{attr:{class:'form-control no-radius input-md'}}) }}
+                                                                    {{ form_errors(form.value) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endblock %}
+                                            {% endembed %}
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                {######################
+                                #   ACTIONS
+                                #######################}
+                                <div class="clearfix"></div>
+
+
+                                <div class="form_std_row row">
+                                    <div class="col-md-6 row-btn-prev-next mt10 pb15">
+                                        <div class="control-group pull-left fnsm">
+                                            <div class="controls">
+                                                {{ form_widget(form.save,{attr:{class:'btn champsuivant device-btn'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 row-btn-prev-next mt10 pb15">
+                                        <div class="control-group pull-right fnsm">
+                                            <div class="controls">
+                                                {{ form_widget(form.save_and_stay,{attr:{class:'btn btn-aqua champsuivant device-btn'}}) }}
+                                                <a class="btn btn-red champsuivant device-btn" href="{{ path(route_list) }}">Retour à la liste</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

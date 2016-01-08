@@ -1,0 +1,12 @@
+parameters:
+#    jrk_portfolio_front.example.class: Jrk\Portfolio\FrontBundle\Example
+
+services:
+#    jrk_portfolio_front.example:
+#        class: %jrk_portfolio_front.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    off.contact_type:
+        class: Jrk\Portfolio\FrontBundle\Form\ContactType
+        tags:
+            - { name: form.type, alias: contact }
