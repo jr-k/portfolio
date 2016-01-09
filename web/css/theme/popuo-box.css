@@ -664,6 +664,7 @@ a.btn-strict:active, a.btn-strict.active {
     border-radius: 4px;
     padding-left: 0;
     padding-right: 0;
+    background: #F05F40;
 
 }
 .project-pic img {

@@ -18,7 +18,7 @@ class ProjectType extends AbstractType
 
         $builder
             ->add('attachment', 'file', array(
-                'label' => 'Photo (528x284) : ',
+                'label' => 'Photo (650x350) : ',
                 'required' => false
             ))
 

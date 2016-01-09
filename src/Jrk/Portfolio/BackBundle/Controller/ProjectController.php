@@ -117,7 +117,7 @@ class ProjectController extends BaseController
 
                 if (is_object($attachment)) {
                     $attachment->move($entity->getUploadDirectoryPath(true), 'picture.jpg');
-                    $this->get('liip_imagine.cache.manager')->remove($entity->getFile());
+                    $this->get('liip_imagine.cache.manager')->remove($entity->getPicture());
                 }
 
                 // Picture management
@@ -125,7 +125,7 @@ class ProjectController extends BaseController
 
                 if (is_object($attachment)) {
                     $attachment->move($entity->getUploadDirectoryPath(true), 'picture-thumb.jpg');
-                    $this->get('liip_imagine.cache.manager')->remove($entity->getFile());
+                    $this->get('liip_imagine.cache.manager')->remove($entity->getPicture(true,'-thumb'));
                 }
 
                 // Multi buttons management

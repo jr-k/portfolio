@@ -189,7 +189,7 @@ liip_imagine:
                 thumbnail: { size: [280, 280], mode: outbond }
         project_cover:
             filters:
-                thumbnail: { size: [792, 426], mode: outbound }
+                thumbnail: { size: [650, 350], mode: outbound }
 
 # Form captcha
 gregwar_captcha: ~
