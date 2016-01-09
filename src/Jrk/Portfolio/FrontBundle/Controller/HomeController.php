@@ -14,7 +14,9 @@ class HomeController extends BaseController
     public function homepageAction(Request $request)
     {
 
-        $projects = $this->getRepository('Project','JrkPortfolioFrontBundle')->findAll();
+        $projects = $this->getRepository('Project','JrkPortfolioFrontBundle')->findBy(array(
+            'active' => true
+        ));
 
         $contact = new Contact();
         $formContact = $this->createForm('contact', $contact);
